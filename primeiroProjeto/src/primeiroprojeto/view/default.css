@@ -1,0 +1,11 @@
+
+.AnchorPane{
+    -fx-background-color: rgb(255,255,255);
+}
+.TextField{
+    -fx-background-color:rgb(242,242,242);
+}
+.Button{
+    -fx-background-color:rgb(76,175,80);
+    -fx-text-fill:rgb(255,255,255);
+}
