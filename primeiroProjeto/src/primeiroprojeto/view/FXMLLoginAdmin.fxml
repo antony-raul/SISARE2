@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="290.0" prefWidth="360.0" styleClass="AnchorPane" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLDocumentController">
    <effect>
@@ -27,12 +26,6 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Text fill="#948b8b" layoutX="83.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entra como Admin" />
-      <Label layoutX="158.0" layoutY="14.0" text="SISARE" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" />
-      <Button layoutX="188.0" layoutY="243.0" mnemonicParsing="false" onAction="#handleNovaJanela" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Entra" textFill="#fffefe">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
+      <Label layoutX="138.0" layoutY="14.0" text="Login do Admin" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" />
    </children>
 </AnchorPane>
