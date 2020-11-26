@@ -23,6 +23,7 @@ public class ConnectionFactory {
     private static final String URL = "jdbc:mysql://localhost:3306/sisaredb";
     private static final String USER = "root";
     private static final String PASS = "";
+    public static Connection getConnection;
     
     public static Connection getConnection(){
         

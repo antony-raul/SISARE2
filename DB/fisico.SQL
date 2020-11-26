@@ -2,10 +2,8 @@ CREATE DATABASE sisaredb
 
 CREATE TABLE funcionario (
 matricula INTEGER PRIMARY KEY,
-nome VARCHAR(100),
-rua VARCHAR(100),
-numero INTEGER,
-ativo BOOL
+nome VARCHAR(100);
+senha VARCHAR(7),
 )
 
 CREATE TABLE email_func (
@@ -27,6 +25,9 @@ id_resp INTEGER PRIMARY KEY
 
 CREATE TABLE aluno (
 matricula INTEGER PRIMARY KEY,
+nome VARCHAR(100),
+rua VARCHAR(100),
+ativo BOOL,
 id_resp_fk INTEGER
 FOREIGN KEY(id_resp_fk) REFERENCES responsavel (id_resp)
 )
