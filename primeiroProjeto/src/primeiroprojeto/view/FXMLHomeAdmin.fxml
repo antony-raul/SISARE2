@@ -17,8 +17,8 @@
       </Label>
       <TableView layoutX="13.0" layoutY="67.0" prefHeight="278.0" prefWidth="574.0">
         <columns>
-          <TableColumn prefWidth="288.0" text="Nome" />
-            <TableColumn minWidth="0.0" prefWidth="117.0" text="Matricula" />
+          <TableColumn fx:id="nomeCol" prefWidth="288.0" text="Nome" />
+          <TableColumn fx:id="matriculaCol" minWidth="0.0" prefWidth="117.0" text="Matricula" />
         </columns>
       </TableView>
       <Button layoutX="311.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleNovaJanela" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
