@@ -28,7 +28,7 @@ public class FuncionarioDAO {
         
         try {
             
-            stmt = con.prepareStatement("INSTERT INTO funcionario (nome, matriula, senha)VALUES(?, ?, ?)");
+            stmt = con.prepareStatement("INSTERT INTO funcionario (nome, matricula, senha)VALUES(?, ?, ?)");
             stmt.setInt(1, f.getMatricula());
             stmt.setString(2, f.getNome());
             stmt.setString(3, f.getSenha());
