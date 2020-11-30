@@ -7,7 +7,7 @@
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="290.0" prefWidth="360.0" styleClass="AnchorPane" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLDocumentController">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="290.0" prefWidth="360.0" styleClass="AnchorPane" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLLoginAdminController">
    <effect>
       <ColorAdjust />
    </effect>
@@ -22,7 +22,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Button id="Button" layoutX="45.0" layoutY="185.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="Button" stylesheets="@default.css" text="LOGIN" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+      <Button id="Button" layoutX="45.0" layoutY="185.0" mnemonicParsing="false" onAction="#LoginAdminBotao" prefHeight="50.0" prefWidth="270.0" styleClass="Button" stylesheets="@default.css" text="LOGIN" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

@@ -21,17 +21,17 @@
           <TableColumn fx:id="matriculaCol" minWidth="0.0" prefWidth="117.0" text="Matricula" />
         </columns>
       </TableView>
-      <Button layoutX="311.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleNovaJanela" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
+      <Button layoutX="311.0" layoutY="361.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="410.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleNovaJanela" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Editar" textFill="#fffefe">
+      <Button layoutX="410.0" layoutY="361.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Editar" textFill="#fffefe">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="506.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleNovaJanela" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Ecluir" textFill="#fffefe">
+      <Button layoutX="506.0" layoutY="361.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Ecluir" textFill="#fffefe">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
