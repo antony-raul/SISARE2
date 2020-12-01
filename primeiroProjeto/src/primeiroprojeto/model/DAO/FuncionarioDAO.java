@@ -115,4 +115,32 @@ public class FuncionarioDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
+    
+    public boolean checkLogin(String matricula,String senha){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        boolean check = false;
+        
+        try{
+            stmt = con.prepareStatement("SELECT * FROM funcionario WHERE matricula = ? and senha = ?");
+            stmt.setString(1, matricula);
+            stmt.setString(2,senha);
+            
+            rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                
+                check = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        
+        return check;
+    }
 }

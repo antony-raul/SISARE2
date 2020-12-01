@@ -8,22 +8,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="290.0" prefWidth="360.0" styleClass="AnchorPane" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLDocumentController">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="290.0" prefWidth="360.0" styleClass="AnchorPane" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLLoginFuncionarioController">
    <effect>
       <ColorAdjust />
    </effect>
    <children>
-      <TextField id="TextField" fx:id="userName" layoutX="45.0" layoutY="47.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="270.0" promptText="Username" styleClass="TextField" stylesheets="@default.css">
+      <TextField id="TextField" fx:id="matricula" layoutX="45.0" layoutY="47.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="270.0" promptText="Username" styleClass="TextField" stylesheets="@default.css">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField id="SenhaTextField" fx:id="pass" layoutX="45.0" layoutY="115.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="270.0" promptText="Password" styleClass="TextField" stylesheets="@default.css">
+      <TextField id="SenhaTextField" fx:id="senha" layoutX="45.0" layoutY="115.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="270.0" promptText="Password" styleClass="TextField" stylesheets="@default.css">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Button id="Button" layoutX="45.0" layoutY="185.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="Button" stylesheets="@default.css" text="LOGIN" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+      <Button id="Button" layoutX="45.0" layoutY="185.0" mnemonicParsing="false" onAction="#BotaoLoginFuc" prefHeight="50.0" prefWidth="270.0" styleClass="Button" stylesheets="@default.css" text="LOGIN" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
