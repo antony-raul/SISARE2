@@ -12,9 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import primeiroprojeto.model.DAO.UserDAO;
-import primeiroprojeto.model.bean.User;
+import primeiroprojeto.model.DAO.FuncionarioDAO;
+import primeiroprojeto.model.bean.Funcionario;
 
 /**
  *
@@ -23,44 +22,28 @@ import primeiroprojeto.model.bean.User;
 public class FXMLCadastrarUsuarioController implements Initializable {
     
     @FXML
-    private TextField userName;
+    private TextField nomeFunc;
     @FXML
-    private TextField pass;
-    private Stage stage;
-    boolean flagConfirmacao = false;
+    private TextField senhaFunc;
+    @FXML
+    private TextField matriculaFunc;
 
-    public boolean isFlagConfirmacao() {
-        return flagConfirmacao;
-    }
-
-    public void setFlagConfirmacao(boolean flagConfirmacao) {
-        this.flagConfirmacao = flagConfirmacao;
-    }
-
-    public Stage getStage() {
-        return stage;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
     
     @FXML
-    private void Botao(ActionEvent event) {
+    private void btnCreate(ActionEvent event) {
         
-        User us = new User();
-        UserDAO dao = new UserDAO();
+        Funcionario f = new Funcionario();
+        FuncionarioDAO fdao = new FuncionarioDAO();
         
-        us.setUserName(userName.getText());
-        us.setPass(pass.getText());
-        dao.create(us);
+        f.setMatricula(Integer.parseInt(matriculaFunc.getText()));
+        f.setNome(nomeFunc.getText());
+        f.setSenha(senhaFunc.getText());
+        fdao.create(f);
         //Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         //alert.setTitle("Cadastro de usuario!");
         //alert.setHeaderText("Usuario cadastrado com sucesso");
         //alert.setContentText(" ");
         //alert.show();
-        setFlagConfirmacao(true);
-        getStage().close();
     }
     
     @Override
