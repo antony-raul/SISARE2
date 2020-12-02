@@ -38,7 +38,9 @@ public class FXMLCadastrarUsuarioController implements Initializable {
         f.setMatricula(Integer.parseInt(matriculaFunc.getText()));
         f.setNome(nomeFunc.getText());
         f.setSenha(senhaFunc.getText());
+        
         fdao.create(f);
+        
         //Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         //alert.setTitle("Cadastro de usuario!");
         //alert.setHeaderText("Usuario cadastrado com sucesso");

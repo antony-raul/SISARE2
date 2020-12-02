@@ -1,5 +1,11 @@
 CREATE DATABASE sisaredb
 
+CREATE TABLE user (
+id INTEGER PRIMARY KEY,
+userName VARCHAR(100);
+pass VARCHAR(7),
+)
+
 CREATE TABLE funcionario (
 matricula INTEGER PRIMARY KEY,
 nome VARCHAR(100);

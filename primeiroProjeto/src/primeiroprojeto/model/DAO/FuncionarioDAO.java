@@ -28,12 +28,14 @@ public class FuncionarioDAO {
         
         try {
             
-            stmt = con.prepareStatement("INSTERT INTO funcionario (nome, matricula, senha)VALUES(?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO funcionario (matricula,nome,senha) VALUES (?,?,?)");
             stmt.setInt(1, f.getMatricula());
             stmt.setString(2, f.getNome());
             stmt.setString(3, f.getSenha());
             
             stmt.executeUpdate();
+            
+            System.out.println("salvo com sucesso");
             
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
         } catch (SQLException ex) {
