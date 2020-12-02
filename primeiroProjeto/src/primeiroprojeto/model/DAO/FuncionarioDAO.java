@@ -23,7 +23,7 @@ import primeiroprojeto.model.bean.Funcionario;
  */
 public class FuncionarioDAO {
     public void create(Funcionario f) {
-        Connection con = ConnectionFactory.getConnection;
+        Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try {
