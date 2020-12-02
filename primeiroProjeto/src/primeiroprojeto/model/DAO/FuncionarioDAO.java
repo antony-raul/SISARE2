@@ -81,7 +81,7 @@ public class FuncionarioDAO {
         
         try {
             
-            stmt = con.prepareStatement("UPDATE funcionario nome = ?, matriula = ?, senha = ? WHERE matricula = ?");
+            stmt = con.prepareStatement("UPDATE funcionario nome = ?, matricula = ?, senha = ? WHERE matricula = ?");
             stmt.setInt(1, f.getMatricula());
             stmt.setString(2, f.getNome());
             stmt.setString(3, f.getSenha());

@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -57,6 +58,30 @@ public class FXMLHomeAdminController {
         Funcionario selectedItem = tableView.getSelectionModel().getSelectedItem();
 
         tableView.getItems().remove(selectedItem);
+        
+    }
+    
+    @FXML
+    private void btnUpdate(ActionEvent event) throws IOException {
+        Funcionario selectedItem = tableView.getSelectionModel().getSelectedItem();
+        
+        if (selectedItem != null) {
+            Node node = (Node) event.getSource();
+            
+            Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLEditarFuncionario.fxml"));
+            
+            stage.setUserData(selectedItem);
+            
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setIconified(false);
+            stage.setTitle("Editar Usuário");
+            stage.show();
+        }
         
     }
     
