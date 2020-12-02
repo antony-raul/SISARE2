@@ -46,7 +46,7 @@ public class FuncionarioDAO {
     }
     
     public List<Funcionario> read() {
-        Connection con = ConnectionFactory.getConnection;
+        Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 

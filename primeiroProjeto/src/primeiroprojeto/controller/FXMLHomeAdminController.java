@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,7 +29,7 @@ import primeiroprojeto.model.bean.Funcionario;
  *
  * @author kaio
  */
-public class FXMLHomeAdminController {
+public class FXMLHomeAdminController implements Initializable {
     @FXML
     private TableView<Funcionario> tableView;
     
@@ -37,20 +38,23 @@ public class FXMLHomeAdminController {
     
     @FXML
     private TableColumn<Funcionario, String> matriculaCol;
-
-
     
+    ObservableList<Funcionario> observableList;
+    
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
-        nomeCol.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
-        matriculaCol.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("matricula"));
-
-        tableView.getItems().setAll(funcionarioList());
+        loadFuncionarios();
     }
     
-    private ObservableList<Funcionario> funcionarioList() {
+    private void loadFuncionarios() {
+        nomeCol.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
+        matriculaCol.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("matricula"));
+        
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         
-        return FXCollections.observableArrayList(funcionarioDAO.read());
+        observableList = FXCollections.observableArrayList(funcionarioDAO.read());
+        tableView.refresh();
+        tableView.setItems(observableList);
     }
     
     @FXML
