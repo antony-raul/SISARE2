@@ -33,6 +33,8 @@ CREATE TABLE aluno (
 matricula INTEGER PRIMARY KEY,
 nome VARCHAR(100),
 rua VARCHAR(100),
+curso VARCHAR(100),
+numero INTEGER,
 ativo BOOL,
 id_resp_fk INTEGER,
 FOREIGN KEY(id_resp_fk) REFERENCES responsavel (id_resp)

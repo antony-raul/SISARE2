@@ -21,14 +21,14 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="311.0" prefWidth="570.0">
                      <children>
-                        <TableView layoutX="10.0" layoutY="24.0" prefHeight="295.0" prefWidth="578.0">
+                        <TableView fx:id="tableView" layoutX="10.0" layoutY="24.0" prefHeight="295.0" prefWidth="578.0">
                           <columns>
-                            <TableColumn prefWidth="177.0" text="Nome" />
-                            <TableColumn prefWidth="85.0" text="Matricula" />
-                              <TableColumn prefWidth="106.0" text="Rua" />
-                              <TableColumn prefWidth="54.0" text="Número" />
-                              <TableColumn prefWidth="87.0" text="Curso" />
-                              <TableColumn prefWidth="68.0" text="Status" />
+                            <TableColumn fx:id="nomeCol" prefWidth="177.0" text="Nome" />
+                            <TableColumn fx:id="matriculaCol" prefWidth="85.0" text="Matricula" />
+                            <TableColumn fx:id="ruaCol" prefWidth="106.0" text="Rua" />
+                            <TableColumn fx:id="numeroCol" prefWidth="54.0" text="Número" />
+                            <TableColumn fx:id="cursoCol" prefWidth="87.0" text="Curso" />
+                            <TableColumn fx:id="statusCol" prefWidth="68.0" text="Status" />
                           </columns>
                         </TableView>
                         <Button layoutX="307.0" layoutY="331.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">

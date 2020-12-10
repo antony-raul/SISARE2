@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import primeiroprojeto.model.DAO.FuncionarioDAO;
 import primeiroprojeto.model.bean.Funcionario;
@@ -21,11 +22,8 @@ import primeiroprojeto.model.bean.Funcionario;
  */
 public class FXMLCadastrarUsuarioController implements Initializable {
     
-    @FXML
     private TextField nomeFunc;
-    @FXML
     private TextField senhaFunc;
-    @FXML
     private TextField matriculaFunc;
 
     

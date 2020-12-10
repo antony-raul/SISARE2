@@ -37,18 +37,18 @@ public class FXMLHomeAdminController implements Initializable {
     private TableColumn<Funcionario, String> nomeCol;
     
     @FXML
-    private TableColumn<Funcionario, String> matriculaCol;
+    private TableColumn<Funcionario, Integer> matriculaCol;
     
     ObservableList<Funcionario> observableList;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        loadFuncionarios();
+        loadFuncionarios();
     }
     
     private void loadFuncionarios() {
         nomeCol.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
-        matriculaCol.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("matricula"));
+        matriculaCol.setCellValueFactory(new PropertyValueFactory<Funcionario, Integer>("matricula"));
         
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         

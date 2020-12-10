@@ -23,17 +23,19 @@ import primeiroprojeto.model.bean.Aluno;
  */
 public class AlunoDAO {
     public void create(Aluno a) {
-         Connection con = ConnectionFactory.getConnection;
+         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try {
             
-            stmt = con.prepareStatement("INSTERT INTO aluno (matricula, nome, rua, ativo, id_resp_fk)VALUES(?, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSTERT INTO aluno (matricula, nome, rua, curso, numero, ativo, id_resp_fk)VALUES(?, ?, ?, ?, ?, ?, ?)");
             stmt.setInt(1, a.getMatricula());
             stmt.setString(2, a.getNome());
             stmt.setString(3, a.getRua());
-            stmt.setBoolean(4, a.getAtivo());
-            stmt.setInt(5, a.getId_resp_fk());
+            stmt.setString(4, a.getCurso());
+            stmt.setInt(5, a.getNumero());
+            stmt.setBoolean(6, a.getAtivo());
+            stmt.setInt(7, a.getId_resp_fk());
             
             stmt.executeUpdate();
             
@@ -46,7 +48,7 @@ public class AlunoDAO {
     }
     
     public List<Aluno> read() {
-        Connection con = ConnectionFactory.getConnection;
+        Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -63,6 +65,8 @@ public class AlunoDAO {
                 aluno.setMatricula(rs.getInt("matricula"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setRua(rs.getString("rua"));
+                aluno.setCurso(rs.getString("curso"));
+                aluno.setNumero(rs.getInt("numero"));
                 aluno.setAtivo(rs.getBoolean("ativo"));
                 aluno.setId_resp_fk(rs.getInt("id_resp_fk"));
                 alunos.add(aluno);
@@ -79,15 +83,17 @@ public class AlunoDAO {
     }
     
     public void update(Aluno a) {
-        Connection con = ConnectionFactory.getConnection;
+        Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try {
             
-            stmt = con.prepareStatement("UPDATE aluno matriula = ?, nome = ?, rua = ?, ativo = ?, id_resp_fk = ? WHERE matricula = ?");
+            stmt = con.prepareStatement("UPDATE aluno matriula = ?, nome = ?, rua = ?, curso = ?, numero = ? ativo = ?, id_resp_fk = ? WHERE matricula = ?");
             stmt.setInt(1, a.getMatricula());
             stmt.setString(2, a.getNome());
             stmt.setString(3, a.getRua());
+            stmt.setString(2, a.getCurso());
+            stmt.setInt(3, a.getNumero());
             stmt.setBoolean(4, a.getAtivo());
             stmt.setInt(5, a.getId_resp_fk());
             stmt.setInt(6, a.getMatricula());
@@ -103,7 +109,7 @@ public class AlunoDAO {
     }
     
     public void delete(Aluno a) {
-        Connection con = ConnectionFactory.getConnection;
+        Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try {

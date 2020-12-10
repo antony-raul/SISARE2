@@ -13,9 +13,26 @@ public class Aluno {
     private int matricula;
     private String nome;
     private String rua;
+    private String curso;
+    private int numero;
     private boolean ativo;
     private int id_resp_fk;
     
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+    
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
     
     public String getNome() {
         return nome;
