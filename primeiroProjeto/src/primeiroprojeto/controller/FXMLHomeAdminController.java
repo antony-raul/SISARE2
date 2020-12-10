@@ -59,9 +59,10 @@ public class FXMLHomeAdminController implements Initializable {
     
     @FXML
     private void btnDelete(ActionEvent event) {
-        Funcionario selectedItem = tableView.getSelectionModel().getSelectedItem();
-
-        tableView.getItems().remove(selectedItem);
+        Funcionario funcionario = tableView.getSelectionModel().getSelectedItem();
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        funcionarioDAO.delete(funcionario);
+        tableView.refresh();
         
     }
     
@@ -73,7 +74,6 @@ public class FXMLHomeAdminController implements Initializable {
             Node node = (Node) event.getSource();
             
             Stage stage = (Stage) node.getScene().getWindow();
-            stage.close();
             
             Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLEditarFuncionario.fxml"));
             

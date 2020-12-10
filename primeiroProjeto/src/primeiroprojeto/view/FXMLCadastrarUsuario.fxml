@@ -15,7 +15,7 @@
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="126.0" prefHeight="31.0" prefWidth="62.0" text="Nome" textAlignment="CENTER" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="220.0" text="Senha" />
       <Button layoutX="352.0" layoutY="273.0" mnemonicParsing="false" onAction="#btnCreate" text="Confirmar" />
-      <Button fx:id="btnCancelar" layoutX="444.0" layoutY="274.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="btnCancelar" layoutX="444.0" layoutY="274.0" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" />
       <TextField fx:id="nomeFunc" layoutX="111.0" layoutY="129.0" prefHeight="25.0" prefWidth="395.0" />
       <TextField fx:id="senhaFunc" layoutX="111.0" layoutY="218.0" prefHeight="25.0" prefWidth="395.0" />
       <Label layoutX="218.0" layoutY="45.0" text="Cadastro de Funcionário">

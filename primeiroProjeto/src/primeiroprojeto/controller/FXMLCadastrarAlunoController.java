@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import primeiroprojeto.model.DAO.AlunoDAO;
 import primeiroprojeto.model.bean.Aluno;
 
@@ -24,8 +25,6 @@ public class FXMLCadastrarAlunoController implements Initializable {
     @FXML
     private Button btnConfirmar;
     @FXML
-    private Button btnCancelar;
-    @FXML
     private TextField nomeAluno;
     @FXML
     private TextField cursoAluno;
@@ -35,9 +34,12 @@ public class FXMLCadastrarAlunoController implements Initializable {
     private TextField ruaAluno;
     @FXML
     private TextField numAluno;
+    @FXML
+    private javafx.scene.control.Button btnCancelar;
+  
     
-    
-    private void btnConfirmar(ActionEvent event) {
+    @FXML
+    private void btnCadastrarAluno(ActionEvent event) {
         
         Aluno aluno = new Aluno();
         AlunoDAO alunoDAO = new AlunoDAO();
@@ -47,13 +49,22 @@ public class FXMLCadastrarAlunoController implements Initializable {
         aluno.setCurso(cursoAluno.getText());
         aluno.setRua(ruaAluno.getText());
         aluno.setNumero(Integer.parseInt(numAluno.getText()));
+        aluno.setAtivo(true);
         
         
-        //Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        //alert.setTitle("Cadastro de usuario!");
-        //alert.setHeaderText("Usuario cadastrado com sucesso");
-        //alert.setContentText(" ");
-        //alert.show();
+        alunoDAO.create(aluno);
+        
+        nomeAluno.setText("");
+        matriculaAluno.setText("");
+        cursoAluno.setText("");
+        numAluno.setText("");
+        ruaAluno.setText("");
+    }
+    
+    @FXML
+    private void closeWindow(ActionEvent event) {
+        Stage stage = (Stage) btnCancelar.getScene().getWindow();
+        stage.close();
     }
     
     @Override

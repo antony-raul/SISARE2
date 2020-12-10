@@ -12,18 +12,6 @@ nome VARCHAR(100),
 senha VARCHAR(7)
 );
 
-CREATE TABLE email_func (
-email VARCHAR(100) PRIMARY KEY,
-matricula_fk INTEGER,
-FOREIGN KEY(matricula_fk) REFERENCES funcionario (matricula)
-);
-
-CREATE TABLE telefone (
-telefone VARCHAR(11) PRIMARY KEY,
-matricula_fk INTEGER,
-FOREIGN KEY(matricula_fk) REFERENCES funcionario (matricula)
-);
-
 CREATE TABLE responsavel (
 nome VARCHAR(100),
 id_resp INTEGER PRIMARY KEY
@@ -36,10 +24,19 @@ rua VARCHAR(100),
 curso VARCHAR(100),
 numero INTEGER,
 ativo BOOL,
-id_resp_fk INTEGER,
-FOREIGN KEY(id_resp_fk) REFERENCES responsavel (id_resp)
 );
 
+CREATE TABLE email_func (
+email VARCHAR(100) PRIMARY KEY,
+matricula_fk INTEGER,
+FOREIGN KEY(matricula_fk) REFERENCES funcionario (matricula)
+);
+
+CREATE TABLE telefone (
+telefone VARCHAR(11) PRIMARY KEY,
+matricula_fk INTEGER,
+FOREIGN KEY(matricula_fk) REFERENCES funcionario (matricula)
+);
 
 CREATE TABLE publico_externo (
 numero_documento VARCHAR(10) PRIMARY KEY,

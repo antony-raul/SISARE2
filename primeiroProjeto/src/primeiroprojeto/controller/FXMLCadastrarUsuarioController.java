@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import primeiroprojeto.model.DAO.FuncionarioDAO;
 import primeiroprojeto.model.bean.Funcionario;
 
@@ -21,12 +22,15 @@ import primeiroprojeto.model.bean.Funcionario;
  * @author raulz
  */
 public class FXMLCadastrarUsuarioController implements Initializable {
-    
+    @FXML
     private TextField nomeFunc;
+    @FXML
     private TextField senhaFunc;
+    @FXML
     private TextField matriculaFunc;
+    @FXML
+    private javafx.scene.control.Button btnCancelar;
 
-    
     @FXML
     private void btnCreate(ActionEvent event) {
         
@@ -39,11 +43,15 @@ public class FXMLCadastrarUsuarioController implements Initializable {
         
         fdao.create(f);
         
-        //Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        //alert.setTitle("Cadastro de usuario!");
-        //alert.setHeaderText("Usuario cadastrado com sucesso");
-        //alert.setContentText(" ");
-        //alert.show();
+        nomeFunc.setText("");
+        senhaFunc.setText("");
+        matriculaFunc.setText("");
+    }
+    
+    @FXML
+    private void closeWindow(ActionEvent event) {
+        Stage stage = (Stage) btnCancelar.getScene().getWindow();
+        stage.close();
     }
     
     @Override

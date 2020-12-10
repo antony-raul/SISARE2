@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="355.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLCadastrarUsuarioController">
+<AnchorPane id="AnchorPane" prefHeight="355.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLCadastrarAlunoController">
     <stylesheets>
         <URL value="@default.css" />
     </stylesheets>
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="98.0" prefHeight="31.0" prefWidth="62.0" text="Nome" textAlignment="CENTER" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="192.0" text="Curso" />
-      <Button fx:id="btnConfirmar" layoutX="352.0" layoutY="291.0" mnemonicParsing="false" onAction="#btnCreate" text="Confirmar" />
-      <Button fx:id="btnCancelar" layoutX="444.0" layoutY="292.0" mnemonicParsing="false" text="Cancelar" />
+      <Button onAction="#btnCadastrarAluno" layoutX="352.0" layoutY="291.0" mnemonicParsing="false" text="Confirmar" />
+      <Button fx:id="btnCancelar" onAction="#closeWindow" layoutX="444.0" layoutY="292.0" mnemonicParsing="false" text="Cancelar" />
       <TextField fx:id="nomeAluno" layoutX="111.0" layoutY="101.0" prefHeight="25.0" prefWidth="395.0" />
       <TextField fx:id="cursoAluno" layoutX="111.0" layoutY="190.0" prefHeight="25.0" prefWidth="395.0" />
       <Label layoutX="218.0" layoutY="45.0" text="Cadastro de Aluno">

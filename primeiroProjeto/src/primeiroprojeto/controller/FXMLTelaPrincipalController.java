@@ -5,15 +5,20 @@
  */
 package primeiroprojeto.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import primeiroprojeto.model.DAO.AlunoDAO;
 import primeiroprojeto.model.bean.Aluno;
 
@@ -59,6 +64,21 @@ public class FXMLTelaPrincipalController implements Initializable {
         observableList = FXCollections.observableArrayList(alunoDAO.read());
         tableView.refresh();
         tableView.setItems(observableList);
+    }
+    
+    @FXML
+    private void handleJanelaCadastrarAluno() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLCadastrarAluno.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        Stage stage = new Stage();
+        
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setIconified(false);
+        stage.setTitle("Cadastrar Aluno");
+        stage.show();
     }
     
 }

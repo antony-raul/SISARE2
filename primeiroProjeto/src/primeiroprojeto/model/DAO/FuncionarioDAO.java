@@ -78,12 +78,12 @@ public class FuncionarioDAO {
     }
     
     public void update(Funcionario f) {
-        Connection con = ConnectionFactory.getConnection;
+        Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try {
             
-            stmt = con.prepareStatement("UPDATE funcionario nome = ?, matricula = ?, senha = ? WHERE matricula = ?");
+            stmt = con.prepareStatement("UPDATE funcionario SET matricula = ?, nome = ?, senha = ? WHERE matricula = ?");
             stmt.setInt(1, f.getMatricula());
             stmt.setString(2, f.getNome());
             stmt.setString(3, f.getSenha());
@@ -100,7 +100,7 @@ public class FuncionarioDAO {
     }
     
     public void delete(Funcionario f) {
-        Connection con = ConnectionFactory.getConnection;
+        Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try {

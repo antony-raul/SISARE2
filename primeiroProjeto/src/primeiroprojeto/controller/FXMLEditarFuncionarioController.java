@@ -22,8 +22,6 @@ public class FXMLEditarFuncionarioController {
     private TextField nomeFunc;
     @FXML
     private TextField senhaFunc;
-    @FXML
-    private TextField matriculaFunc;
     
     @FXML
     private void btnUpdate(ActionEvent event){
@@ -34,11 +32,14 @@ public class FXMLEditarFuncionarioController {
         Funcionario f = (Funcionario) stage.getUserData();
         FuncionarioDAO fdao = new FuncionarioDAO();
         
-        f.setMatricula(Integer.parseInt(matriculaFunc.getText()));
         f.setNome(nomeFunc.getText());
         f.setSenha(senhaFunc.getText());
+        System.out.println(f.getMatricula());
         
         fdao.update(f);
+        
+        nomeFunc.setText("");
+        senhaFunc.setText("");
                 
     }
 }

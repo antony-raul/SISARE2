@@ -28,14 +28,13 @@ public class AlunoDAO {
         
         try {
             
-            stmt = con.prepareStatement("INSTERT INTO aluno (matricula, nome, rua, curso, numero, ativo, id_resp_fk)VALUES(?, ?, ?, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO aluno (matricula, nome, rua, curso, numero, ativo)VALUES(?, ?, ?, ?, ?, ?)");
             stmt.setInt(1, a.getMatricula());
             stmt.setString(2, a.getNome());
             stmt.setString(3, a.getRua());
             stmt.setString(4, a.getCurso());
             stmt.setInt(5, a.getNumero());
             stmt.setBoolean(6, a.getAtivo());
-            stmt.setInt(7, a.getId_resp_fk());
             
             stmt.executeUpdate();
             
@@ -68,7 +67,6 @@ public class AlunoDAO {
                 aluno.setCurso(rs.getString("curso"));
                 aluno.setNumero(rs.getInt("numero"));
                 aluno.setAtivo(rs.getBoolean("ativo"));
-                aluno.setId_resp_fk(rs.getInt("id_resp_fk"));
                 alunos.add(aluno);
                 
             }
@@ -92,11 +90,10 @@ public class AlunoDAO {
             stmt.setInt(1, a.getMatricula());
             stmt.setString(2, a.getNome());
             stmt.setString(3, a.getRua());
-            stmt.setString(2, a.getCurso());
-            stmt.setInt(3, a.getNumero());
-            stmt.setBoolean(4, a.getAtivo());
-            stmt.setInt(5, a.getId_resp_fk());
-            stmt.setInt(6, a.getMatricula());
+            stmt.setString(4, a.getCurso());
+            stmt.setInt(5, a.getNumero());
+            stmt.setBoolean(6, a.getAtivo());
+            stmt.setInt(7, a.getMatricula());
             
             stmt.executeUpdate();
             

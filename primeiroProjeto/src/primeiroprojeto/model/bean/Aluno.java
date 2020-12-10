@@ -16,7 +16,6 @@ public class Aluno {
     private String curso;
     private int numero;
     private boolean ativo;
-    private int id_resp_fk;
     
     public String getCurso() {
         return curso;
@@ -66,11 +65,4 @@ public class Aluno {
         this.ativo = ativo;
     }
     
-    public int getId_resp_fk() {
-        return id_resp_fk;
-    }
-
-    public void setId_resp_fk(int id_resp_fk) {
-        this.id_resp_fk = id_resp_fk;
-    }
 }

@@ -31,7 +31,7 @@
                             <TableColumn fx:id="statusCol" prefWidth="68.0" text="Status" />
                           </columns>
                         </TableView>
-                        <Button layoutX="307.0" layoutY="331.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
+                        <Button fx:id="btnCreate" onAction="#handleJanelaCadastrarAluno" layoutX="307.0" layoutY="331.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
