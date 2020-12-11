@@ -105,6 +105,31 @@ public class AlunoDAO {
         }
     }
     
+    public void block(Aluno a) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            
+            stmt = con.prepareStatement("UPDATE aluno SET matricula = ?, nome = ?, rua = ?, curso = ?, numero = ?, ativo = ? WHERE matricula = ?");
+            stmt.setInt(1, a.getMatricula());
+            stmt.setString(2, a.getNome());
+            stmt.setString(3, a.getRua());
+            stmt.setString(4, a.getCurso());
+            stmt.setInt(5, a.getNumero());
+            stmt.setBoolean(6, false);
+            stmt.setInt(7, a.getMatricula());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Bloqueado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao bloquear!"+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
     public void delete(Aluno a) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;

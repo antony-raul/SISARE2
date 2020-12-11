@@ -43,7 +43,7 @@ public class FXMLTelaPrincipalController implements Initializable {
     @FXML
     private TableColumn<Aluno, String> cursoCol;
     @FXML
-    private TableColumn<Aluno, String> statusCol;
+    private TableColumn<Aluno, Boolean> statusCol;
     
     ObservableList<Aluno> observableList;
 
@@ -59,7 +59,7 @@ public class FXMLTelaPrincipalController implements Initializable {
         ruaCol.setCellValueFactory(new PropertyValueFactory<Aluno, String>("rua"));
         numeroCol.setCellValueFactory(new PropertyValueFactory<Aluno, Integer>("numero"));
         cursoCol.setCellValueFactory(new PropertyValueFactory<Aluno, String>("curso"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<Aluno, String>("status"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<Aluno, Boolean>("status"));
         
         AlunoDAO alunoDAO = new AlunoDAO();
         
@@ -89,7 +89,7 @@ public class FXMLTelaPrincipalController implements Initializable {
         AlunoDAO alunoDAO = new AlunoDAO();
         
         if (selectedItem != null) {   
-            selectedItem.setAtivo(false);
+            alunoDAO.block(selectedItem);
             tableView.refresh();
         }
         

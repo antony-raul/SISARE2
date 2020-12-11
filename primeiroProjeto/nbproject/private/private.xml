@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/print1/SISARE2/primeiroProjeto/src/primeiroprojeto/controller/FXMLEditarAlunoController.java</file>
             <file>file:/C:/print1/SISARE2/primeiroProjeto/src/primeiroprojeto/controller/FXMLTelaPrincipalController.java</file>
-            <file>file:/C:/print1/SISARE2/primeiroProjeto/src/primeiroprojeto/view/FXMLEditarAluno.fxml</file>
+            <file>file:/C:/print1/SISARE2/primeiroProjeto/src/primeiroprojeto/controller/FXMLHomeAdminController.java</file>
             <file>file:/C:/print1/SISARE2/primeiroProjeto/src/primeiroprojeto/view/FXMLTelaPrincipal.fxml</file>
         </group>
     </open-files>
