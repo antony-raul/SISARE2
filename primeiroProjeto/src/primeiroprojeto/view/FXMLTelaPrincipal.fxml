@@ -54,11 +54,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="9.0" layoutY="29.0" prefHeight="290.0" prefWidth="582.0">
+                        <TableView fx:id="MaterialView" layoutX="9.0" layoutY="29.0" prefHeight="290.0" prefWidth="582.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Nome" />
-                            <TableColumn prefWidth="75.0" text="Quantidade" />
-                              <TableColumn prefWidth="75.0" text="Tipo" />
+                            <TableColumn fx:id="IDMatCol" prefWidth="70.0" text="ID" />
+                            <TableColumn fx:id="NomeMatCol" minWidth="0.0" prefWidth="213.0" text="Nome" />
+                              <TableColumn fx:id="QtdMatCol" prefWidth="79.0" text="Quantidade" />
                           </columns>
                         </TableView>
                         <Button layoutX="300.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarMaterial" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">

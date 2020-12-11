@@ -22,7 +22,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import primeiroprojeto.model.DAO.AlunoDAO;
+import primeiroprojeto.model.DAO.Itens_locacaoDAO;
 import primeiroprojeto.model.bean.Aluno;
+import primeiroprojeto.model.bean.Itens_locacao;
 
 /**
  * FXML Controller class
@@ -32,6 +34,8 @@ import primeiroprojeto.model.bean.Aluno;
 public class FXMLTelaPrincipalController implements Initializable {
     @FXML
     private TableView<Aluno> tableView;
+    @FXML
+    private TableView<Itens_locacao> MaterialView;
     @FXML
     private TableColumn<Aluno, String> nomeCol;
     @FXML
@@ -44,13 +48,23 @@ public class FXMLTelaPrincipalController implements Initializable {
     private TableColumn<Aluno, String> cursoCol;
     @FXML
     private TableColumn<Aluno, Boolean> statusCol;
+    @FXML
+    private TableColumn<Itens_locacao, Integer> IDMatCol;
+
+    @FXML
+    private TableColumn<Itens_locacao, String> NomeMatCol;
+
+    @FXML
+    private TableColumn<Itens_locacao, Integer> QtdMatCol;
     
     ObservableList<Aluno> observableList;
+    ObservableList<Itens_locacao> observableListMat;
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadAlunos();
+        loadMateriais();
     }
     
     private void loadAlunos() {
@@ -131,6 +145,24 @@ public class FXMLTelaPrincipalController implements Initializable {
         stage.setIconified(false);
         stage.setTitle("Cadastrar Material");
         stage.show();
+    }
+    
+    private void loadMateriais() {
+        //Itens_locacao
+        IDMatCol.setCellValueFactory(new PropertyValueFactory<Itens_locacao, Integer>("id"));
+        NomeMatCol.setCellValueFactory(new PropertyValueFactory<Itens_locacao, String>("nome"));
+        QtdMatCol.setCellValueFactory(new PropertyValueFactory<Itens_locacao, Integer>("quantidade"));
+        
+        Itens_locacaoDAO itemDao = new Itens_locacaoDAO();
+        observableListMat = FXCollections.observableArrayList(itemDao.read());
+        MaterialView.refresh();
+        MaterialView.setItems(observableListMat);
+        
+        
+        
+        
+        
+     
     }
     
 }
