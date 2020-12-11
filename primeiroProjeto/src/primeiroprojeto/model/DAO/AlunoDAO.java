@@ -86,7 +86,7 @@ public class AlunoDAO {
         
         try {
             
-            stmt = con.prepareStatement("UPDATE aluno matriula = ?, nome = ?, rua = ?, curso = ?, numero = ? ativo = ?, id_resp_fk = ? WHERE matricula = ?");
+            stmt = con.prepareStatement("UPDATE aluno SET matricula = ?, nome = ?, rua = ?, curso = ?, numero = ?, ativo = ? WHERE matricula = ?");
             stmt.setInt(1, a.getMatricula());
             stmt.setString(2, a.getNome());
             stmt.setString(3, a.getRua());

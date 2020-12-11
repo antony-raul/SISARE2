@@ -22,6 +22,9 @@ public class FXMLEditarFuncionarioController {
     private TextField nomeFunc;
     @FXML
     private TextField senhaFunc;
+    @FXML
+    private javafx.scene.control.Button btnCancelar;
+    
     
     @FXML
     private void btnUpdate(ActionEvent event){
@@ -34,12 +37,17 @@ public class FXMLEditarFuncionarioController {
         
         f.setNome(nomeFunc.getText());
         f.setSenha(senhaFunc.getText());
-        System.out.println(f.getMatricula());
         
         fdao.update(f);
         
         nomeFunc.setText("");
         senhaFunc.setText("");
                 
+    }
+    
+    @FXML
+    private void closeWindow(ActionEvent event) {
+        Stage stage = (Stage) btnCancelar.getScene().getWindow();
+        stage.close();
     }
 }

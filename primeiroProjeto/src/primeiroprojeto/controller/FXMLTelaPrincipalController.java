@@ -10,9 +10,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
@@ -79,6 +81,41 @@ public class FXMLTelaPrincipalController implements Initializable {
         stage.setIconified(false);
         stage.setTitle("Cadastrar Aluno");
         stage.show();
+    }
+    
+    @FXML
+    private void bloquearAluno(ActionEvent event) {
+        Aluno selectedItem = tableView.getSelectionModel().getSelectedItem();
+        AlunoDAO alunoDAO = new AlunoDAO();
+        
+        if (selectedItem != null) {   
+            selectedItem.setAtivo(false);
+            tableView.refresh();
+        }
+        
+    }
+    
+    @FXML
+    private void handleJanelaEditarAluno(ActionEvent event) throws IOException {
+        Aluno selectedItem = tableView.getSelectionModel().getSelectedItem();
+        
+        if (selectedItem != null) {
+            Node node = (Node) event.getSource();
+            
+            Stage stage = (Stage) node.getScene().getWindow();
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLEditarAluno.fxml"));
+            
+            stage.setUserData(selectedItem);
+            
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setIconified(false);
+            stage.setTitle("Editar Usuário");
+            stage.show();
+        }
+        
     }
     
 }
