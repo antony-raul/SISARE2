@@ -31,17 +31,17 @@
                             <TableColumn fx:id="statusCol" prefWidth="68.0" text="Status" />
                           </columns>
                         </TableView>
-                        <Button fx:id="btnCreate"  onAction="#handleJanelaCadastrarAluno" layoutX="307.0" layoutY="331.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
+                        <Button fx:id="btnCreate" layoutX="307.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarAluno" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button onAction="#handleJanelaEditarAluno" layoutX="406.0" layoutY="331.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Editar" textFill="#fffefe">
+                        <Button layoutX="406.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleJanelaEditarAluno" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Editar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button onAction="#bloquearAluno" layoutX="502.0" layoutY="331.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Bloquear" textFill="#fffefe">
+                        <Button layoutX="502.0" layoutY="331.0" mnemonicParsing="false" onAction="#bloquearAluno" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Bloquear" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -61,7 +61,7 @@
                               <TableColumn prefWidth="75.0" text="Tipo" />
                           </columns>
                         </TableView>
-                        <Button layoutX="300.0" layoutY="332.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
+                        <Button layoutX="300.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarMaterial" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

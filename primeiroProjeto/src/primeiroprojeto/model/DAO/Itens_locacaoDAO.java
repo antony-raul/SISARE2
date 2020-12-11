@@ -22,13 +22,13 @@ public class Itens_locacaoDAO {
         
         try{
             stmt = con.prepareStatement("INSERT INTO itens_locacao "
-                + "(status,ativo,id,quantidade,tipo_fk,nome) VALUES (?,?,?,?,?)");
+                + "(status,id,quantidade,nome) VALUES (?,?,?,?)");
             stmt.setBoolean(1,i.getStatus());
-            stmt.setBoolean(2,i.getAtivo());
-            stmt.setInt(3,i.getId());
-            stmt.setInt(4,i.getQuantidade());
-            stmt.setInt(5,i.getTipo_fk());
-            stmt.setString(6,i.getNome());
+            //stmt.setBoolean(2,i.getAtivo());
+            stmt.setInt(2,i.getId());
+            stmt.setInt(3,i.getQuantidade());
+            //stmt.setInt(5,i.getTipo_fk());
+            stmt.setString(4,i.getNome());
                         
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!!!");
@@ -53,10 +53,10 @@ public class Itens_locacaoDAO {
             while(rs.next()){
                 Itens_locacao item = new Itens_locacao();
                 item.setStatus(rs.getBoolean("status"));
-                item.setAtivo(rs.getBoolean("ativo"));
+                //item.setAtivo(rs.getBoolean("ativo"));
                 item.setId(rs.getInt("id"));
                 item.setQuantidade(rs.getInt("quantidade"));
-                item.setTipo_fk(rs.getInt("tipo_fk"));
+                //item.setTipo_fk(rs.getInt("tipo_fk"));
                 item.setNome(rs.getString("nome"));                    
                 itens.add(item);
             }            
@@ -76,9 +76,9 @@ public class Itens_locacaoDAO {
             stmt = con.prepareStatement("UPDATE itens_locacao SET "
                 + "status = ?,ativo = ?,quantidade = ?,tipo_fk = ?,nome = ? WHERE id = ?");
             stmt.setBoolean(1,i.getStatus());
-            stmt.setBoolean(2,i.getAtivo());            
+            //stmt.setBoolean(2,i.getAtivo());            
             stmt.setInt(3,i.getQuantidade());
-            stmt.setInt(4,i.getTipo_fk());
+            //stmt.setInt(4,i.getTipo_fk());
             stmt.setString(5,i.getNome());
             stmt.setInt(6,i.getId());
             

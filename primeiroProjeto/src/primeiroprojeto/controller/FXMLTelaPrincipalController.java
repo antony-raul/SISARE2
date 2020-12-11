@@ -118,4 +118,19 @@ public class FXMLTelaPrincipalController implements Initializable {
         
     }
     
+    @FXML
+    private void handleJanelaCadastrarMaterial() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLCadastrarMaterial.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        Stage stage = new Stage();
+        
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setIconified(false);
+        stage.setTitle("Cadastrar Material");
+        stage.show();
+    }
+    
 }
