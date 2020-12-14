@@ -165,4 +165,40 @@ public class FXMLTelaPrincipalController implements Initializable {
      
     }
     
+    
+    @FXML
+    private void handleJanelaEditarMaterial(ActionEvent event) throws IOException {
+        Itens_locacao selectedItem = MaterialView.getSelectionModel().getSelectedItem();
+        
+        if (selectedItem != null) {
+            Node node = (Node) event.getSource();
+            
+            Stage stage = (Stage) node.getScene().getWindow();
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLEditarMaterial.fxml"));
+            
+            stage.setUserData(selectedItem);
+            
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setIconified(false);
+            stage.setTitle("Editar Material");
+            stage.show();
+        }
+        
+    }
+    
+    @FXML
+    private void bloquearItem(ActionEvent event) {
+        Itens_locacao selectedItem = MaterialView.getSelectionModel().getSelectedItem();
+        Itens_locacaoDAO itemDAO = new Itens_locacaoDAO();
+        
+        if (selectedItem != null) {   
+            itemDAO.block(selectedItem);
+            MaterialView.refresh();
+        }
+        
+    }
+    
 }

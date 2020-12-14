@@ -74,13 +74,13 @@ public class Itens_locacaoDAO {
         
         try{
             stmt = con.prepareStatement("UPDATE itens_locacao SET "
-                + "status = ?,ativo = ?,quantidade = ?,tipo_fk = ?,nome = ? WHERE id = ?");
+                + "status = ?,quantidade = ?,nome = ? WHERE id = ?");
             stmt.setBoolean(1,i.getStatus());
             //stmt.setBoolean(2,i.getAtivo());            
-            stmt.setInt(3,i.getQuantidade());
+            stmt.setInt(2,i.getQuantidade());
             //stmt.setInt(4,i.getTipo_fk());
-            stmt.setString(5,i.getNome());
-            stmt.setInt(6,i.getId());
+            stmt.setString(3,i.getNome());
+            stmt.setInt(4,i.getId());
             
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!!!");
@@ -105,5 +105,28 @@ public class Itens_locacaoDAO {
         }finally{
             ConnectionFactory.closeConnection(con,stmt);
         }
-    }    
+    }
+
+
+    public void block(Itens_locacao i) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            
+            stmt = con.prepareStatement("UPDATE itens_locacao SET status = ?,quantidade = ?,nome = ? WHERE id = ?");
+            stmt.setBoolean(1, false);
+            stmt.setInt(2, i.getQuantidade());
+            stmt.setString(3, i.getNome());
+            stmt.setInt(4, i.getId());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Bloqueado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao bloquear!"+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
 }
