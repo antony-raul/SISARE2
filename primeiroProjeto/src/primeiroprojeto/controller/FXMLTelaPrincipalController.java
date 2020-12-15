@@ -22,8 +22,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import primeiroprojeto.model.DAO.AlunoDAO;
+import primeiroprojeto.model.DAO.Espacos_locacaoDAO;
 import primeiroprojeto.model.DAO.Itens_locacaoDAO;
 import primeiroprojeto.model.bean.Aluno;
+import primeiroprojeto.model.bean.Espacos_locacao;
 import primeiroprojeto.model.bean.Itens_locacao;
 
 /**
@@ -37,6 +39,8 @@ public class FXMLTelaPrincipalController implements Initializable {
     @FXML
     private TableView<Itens_locacao> MaterialView;
     @FXML
+    private TableView<Espacos_locacao> espacosTableView;
+    @FXML
     private TableColumn<Aluno, String> nomeCol;
     @FXML
     private TableColumn<Aluno, Integer> matriculaCol;
@@ -48,23 +52,31 @@ public class FXMLTelaPrincipalController implements Initializable {
     private TableColumn<Aluno, String> cursoCol;
     @FXML
     private TableColumn<Aluno, Boolean> statusCol;
+    
     @FXML
     private TableColumn<Itens_locacao, Integer> IDMatCol;
-
     @FXML
     private TableColumn<Itens_locacao, String> NomeMatCol;
-
     @FXML
     private TableColumn<Itens_locacao, Integer> QtdMatCol;
     
+    @FXML
+    private TableColumn<Espacos_locacao, Integer> idEspacCol;
+    @FXML
+    private TableColumn<Espacos_locacao, String> nomeEspacCol;
+    @FXML
+    private TableColumn<Espacos_locacao, Boolean> statusEspacCol;
+    
     ObservableList<Aluno> observableList;
     ObservableList<Itens_locacao> observableListMat;
+    ObservableList<Espacos_locacao> observableListEspacos;
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadAlunos();
         loadMateriais();
+        loadEspacos();
     }
     
     private void loadAlunos() {
@@ -99,11 +111,11 @@ public class FXMLTelaPrincipalController implements Initializable {
     
     @FXML
     private void bloquearAluno(ActionEvent event) {
-        Aluno selectedItem = tableView.getSelectionModel().getSelectedItem();
+        Aluno selectedAluno = tableView.getSelectionModel().getSelectedItem();
         AlunoDAO alunoDAO = new AlunoDAO();
         
-        if (selectedItem != null) {   
-            alunoDAO.block(selectedItem);
+        if (selectedAluno != null) {   
+            alunoDAO.block(selectedAluno);
             tableView.refresh();
         }
         
@@ -158,11 +170,6 @@ public class FXMLTelaPrincipalController implements Initializable {
         MaterialView.refresh();
         MaterialView.setItems(observableListMat);
         
-        
-        
-        
-        
-     
     }
     
     
@@ -197,6 +204,68 @@ public class FXMLTelaPrincipalController implements Initializable {
         if (selectedItem != null) {   
             itemDAO.block(selectedItem);
             MaterialView.refresh();
+        }
+        
+    }
+    
+    private void loadEspacos() {
+        idEspacCol.setCellValueFactory(new PropertyValueFactory<Espacos_locacao, Integer>("id"));
+        nomeEspacCol.setCellValueFactory(new PropertyValueFactory<Espacos_locacao, String>("nome"));
+        statusEspacCol.setCellValueFactory(new PropertyValueFactory<Espacos_locacao, Boolean>("status"));
+        
+        Espacos_locacaoDAO espacoDAO = new Espacos_locacaoDAO();
+        
+        observableListEspacos = FXCollections.observableArrayList(espacoDAO.read());
+        tableView.refresh();
+        espacosTableView.setItems(observableListEspacos);
+    }
+    
+    @FXML
+    private void bloquearEspaco(ActionEvent event) {
+        Espacos_locacao selectedEspaco = espacosTableView.getSelectionModel().getSelectedItem();
+        Espacos_locacaoDAO espacoDAO = new Espacos_locacaoDAO();
+        
+        if (selectedEspaco != null) {   
+            espacoDAO.block(selectedEspaco);
+            espacosTableView.refresh();
+        }
+        
+    }
+    
+    @FXML
+    private void handleJanelaCadastrarEspaco() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLCadastrarEspaco.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        Stage stage = new Stage();
+        
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setIconified(false);
+        stage.setTitle("Cadastrar Espaço");
+        stage.show();
+    }
+    
+    @FXML
+    private void handleJanelaEditarEspaco(ActionEvent event) throws IOException {
+        Espacos_locacao selectedItem = espacosTableView.getSelectionModel().getSelectedItem();
+        
+        if (selectedItem != null) {
+            Node node = (Node) event.getSource();
+            
+            Stage stage = (Stage) node.getScene().getWindow();
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLEditarEspaco.fxml"));
+            
+            stage.setUserData(selectedItem);
+            
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setIconified(false);
+            stage.setTitle("Editar Espaço");
+            stage.show();
         }
         
     }
