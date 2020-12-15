@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLTelaPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLTelaPrincipalController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -111,7 +111,32 @@
             </Tab>
             <Tab text="Espaços">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <TableView fx:id="espacosTableView" layoutX="9.0" layoutY="29.0" prefHeight="290.0" prefWidth="582.0">
+                          <columns>
+                            <TableColumn fx:id="idEspacCol" prefWidth="147.0" text="ID" />
+                            <TableColumn fx:id="nomeEspacCol" minWidth="0.0" prefWidth="327.0" text="Nome" />
+                            <TableColumn fx:id="statusEspacCol" prefWidth="107.0" text="Status" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="300.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="399.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaEditarEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Editar" textFill="#fffefe">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="495.0" layoutY="332.0" mnemonicParsing="false" onAction="#bloquearEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Bloquear" textFill="#fffefe">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                </AnchorPane>
               </content>
             </Tab>
         </tabs>
