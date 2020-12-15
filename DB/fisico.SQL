@@ -23,7 +23,7 @@ nome VARCHAR(100),
 rua VARCHAR(100),
 curso VARCHAR(100),
 numero INTEGER,
-ativo BOOL,
+ativo BOOL
 );
 
 CREATE TABLE email_func (
