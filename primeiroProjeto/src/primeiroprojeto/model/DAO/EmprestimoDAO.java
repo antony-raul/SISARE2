@@ -23,7 +23,7 @@ public class EmprestimoDAO {
         try{
             stmt = con.prepareStatement("INSERT INTO emprestimo "
                 + "(situacao,data_emprestimo,hora_emprestimo,data_devolucao,id_resp_fk,id_item_loc,matricula_func_fk,id) VALUES (?,?,?,?,?,?,?,?)");
-            stmt.setString(1,e.getSituacao());
+            stmt.setBoolean(1,e.isSituacao());
             stmt.setString(2,e.getData_emprestimo());
             stmt.setString(3,e.getHora_emprestimo());
             stmt.setString(4,e.getData_devolucao());
@@ -54,7 +54,7 @@ public class EmprestimoDAO {
             
             while(rs.next()){
                 Emprestimo emprestimo = new Emprestimo();
-                emprestimo.setSituacao(rs.getString("situacao"));
+                emprestimo.setSituacao(rs.getBoolean("situacao"));
                 emprestimo.setData_emprestimo(rs.getString("data_emprestimo"));
                 emprestimo.setHora_emprestimo(rs.getString("hora_emprestimo"));
                 emprestimo.setData_devolucao(rs.getString("data_devolucao"));
@@ -81,7 +81,7 @@ public class EmprestimoDAO {
         try{
             stmt = con.prepareStatement("UPDATE emprestimo SET "
                 + "situacao = ?,data_emprestimo = ?,hora_emprestimo = ? ,data_devolucao = ? ,id_resp_fk,id_item_loc = ? ,matricula_func_fk = ? WHERE id = ?");
-            stmt.setString(1,e.getSituacao());
+            stmt.setBoolean(1,e.isSituacao());
             stmt.setString(2,e.getData_emprestimo());
             stmt.setString(3,e.getHora_emprestimo());
             stmt.setString(4,e.getData_devolucao());

@@ -6,7 +6,7 @@ package primeiroprojeto.model.bean;
  */
 public class Emprestimo {
     
-    private String situacao,
+    private String 
                    data_emprestimo,
                    hora_emprestimo,
                    data_devolucao;
@@ -14,12 +14,13 @@ public class Emprestimo {
                 id_item_loc,
                 matricula_func_fk,
                 id;    
+    private boolean situacao;
 
-    public String getSituacao() {
+    public boolean isSituacao() {
         return situacao;
     }
 
-    public void setSituacao(String situacao) {
+    public void setSituacao(boolean situacao) {
         this.situacao = situacao;
     }
 

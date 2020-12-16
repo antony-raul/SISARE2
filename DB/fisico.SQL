@@ -68,7 +68,7 @@ FOREIGN KEY(tipo_fk) REFERENCES tipo_item (tipo)
 
 
 CREATE TABLE emprestimo (
-situacao VARCHAR(100),
+situacao BOOLEAN,
 data_emprestimo DATETIME,
 hora_devolucao DATETIME,
 hora_emprestimo DATETIME,
@@ -78,4 +78,11 @@ id_item_loc INTEGER,
 FOREIGN KEY(id_resp_fk) REFERENCES responsavel (id_resp),
 FOREIGN KEY(matricula_func_FK) REFERENCES funcionario (matricula),
 FOREIGN KEY(id_item_loc) REFERENCES itens_locacao (id)
+);
+
+CREATE TABLE espacos_locacao (
+id INTEGER PRIMARY KEY,
+nome VARCHAR(100),
+status BOOL,
+ativo BOOL
 );
