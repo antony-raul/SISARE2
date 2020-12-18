@@ -1,50 +1,36 @@
 package primeiroprojeto.model.bean;
 
+import java.sql.Date;
+
 /**
  *
  * @author Gabriel_SA
  */
 public class Emprestimo {
     
-    private String 
-                   data_emprestimo,
-                   hora_emprestimo,
-                   data_devolucao;
+    private Date
+                data_emprestimo,
+                data_devolucao;
     private int id_resp_fk,
                 id_item_loc,
+                id_espaco_loc,
                 matricula_func_fk,
                 id;    
-    private boolean situacao;
+    private boolean status;
 
-    public boolean isSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(boolean situacao) {
-        this.situacao = situacao;
-    }
-
-    public String getData_emprestimo() {
+    public Date getData_emprestimo() {
         return data_emprestimo;
     }
 
-    public void setData_emprestimo(String data_emprestimo) {
+    public void setData_emprestimo(Date data_emprestimo) {
         this.data_emprestimo = data_emprestimo;
     }
 
-    public String getHora_emprestimo() {
-        return hora_emprestimo;
-    }
-
-    public void setHora_emprestimo(String hora_emprestimo) {
-        this.hora_emprestimo = hora_emprestimo;
-    }
-
-    public String getData_devolucao() {
+    public Date getData_devolucao() {
         return data_devolucao;
     }
 
-    public void setData_devolucao(String data_devolucao) {
+    public void setData_devolucao(Date data_devolucao) {
         this.data_devolucao = data_devolucao;
     }
 
@@ -64,6 +50,14 @@ public class Emprestimo {
         this.id_item_loc = id_item_loc;
     }
 
+    public int getId_espaco_loc() {
+        return id_espaco_loc;
+    }
+
+    public void setId_espaco_loc(int id_espaco_loc) {
+        this.id_espaco_loc = id_espaco_loc;
+    }
+
     public int getMatricula_func_fk() {
         return matricula_func_fk;
     }
@@ -71,6 +65,7 @@ public class Emprestimo {
     public void setMatricula_func_fk(int matricula_func_fk) {
         this.matricula_func_fk = matricula_func_fk;
     }
+
     public int getId() {
         return id;
     }
@@ -78,5 +73,14 @@ public class Emprestimo {
     public void setId(int id) {
         this.id = id;
     }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
     
 }

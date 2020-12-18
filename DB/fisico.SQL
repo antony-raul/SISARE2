@@ -68,16 +68,18 @@ FOREIGN KEY(tipo_fk) REFERENCES tipo_item (tipo)
 
 
 CREATE TABLE emprestimo (
-situacao BOOLEAN,
-data_emprestimo DATETIME,
-hora_devolucao DATETIME,
-hora_emprestimo DATETIME,
+id INTEGER PRIMARY KEY,
+status BOOLEAN,
+data_emprestimo DATE,
+data_devolucao DATE,
 id_resp_fk INTEGER,
 matricula_func_fk INTEGER(4),
 id_item_loc INTEGER,
+id_espacos_loc INTEGER,
 FOREIGN KEY(id_resp_fk) REFERENCES responsavel (id_resp),
 FOREIGN KEY(matricula_func_FK) REFERENCES funcionario (matricula),
-FOREIGN KEY(id_item_loc) REFERENCES itens_locacao (id)
+FOREIGN KEY(id_item_loc) REFERENCES itens_locacao (id),
+FOREIGN KEY(id_espacos_loc) REFERENCES espacos_locacao (id)
 );
 
 CREATE TABLE espacos_locacao (

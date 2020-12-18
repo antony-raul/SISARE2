@@ -5,19 +5,20 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="371.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="371.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField layoutX="48.0" layoutY="96.0" prefHeight="25.0" prefWidth="440.0" promptText="Matricula do aluno" />
-      <Label layoutX="49.0" layoutY="200.0" text="Data da Reserva">
+      <Label layoutX="49.0" layoutY="215.0" text="Data de Entrega">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="249.0" layoutY="14.0" text="Reserva">
+      <Label layoutX="192.0" layoutY="14.0" text="Cadastrar Empréstimo">
          <font>
             <Font size="18.0" />
          </font>
@@ -37,17 +38,18 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox layoutX="48.0" layoutY="161.0" prefWidth="150.0" promptText="Materiais / espaços" styleClass="Button" />
-      <Label layoutX="48.0" layoutY="134.0" text="Materiais / espaços">
+      <ComboBox layoutX="48.0" layoutY="175.0" prefWidth="150.0" styleClass="Button" />
+      <DatePicker layoutX="48.0" layoutY="243.0" />
+      <ComboBox layoutX="338.0" layoutY="175.0" prefWidth="150.0" />
+      <RadioButton layoutX="48.0" layoutY="146.0" mnemonicParsing="false" text="Materiais">
          <font>
             <Font size="18.0" />
          </font>
-      </Label>
-      <Label layoutX="283.0" layoutY="201.0" text="Hora da Reserva">
+      </RadioButton>
+      <RadioButton layoutX="338.0" layoutY="146.0" mnemonicParsing="false" text="Espaços">
          <font>
             <Font size="18.0" />
          </font>
-      </Label>
-      <DatePicker layoutX="48.0" layoutY="228.0" />
+      </RadioButton>
    </children>
 </AnchorPane>

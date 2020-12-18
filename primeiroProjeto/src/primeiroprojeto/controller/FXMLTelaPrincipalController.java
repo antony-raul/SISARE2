@@ -7,6 +7,7 @@ package primeiroprojeto.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,9 +23,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import primeiroprojeto.model.DAO.AlunoDAO;
+import primeiroprojeto.model.DAO.EmprestimoDAO;
 import primeiroprojeto.model.DAO.Espacos_locacaoDAO;
 import primeiroprojeto.model.DAO.Itens_locacaoDAO;
 import primeiroprojeto.model.bean.Aluno;
+import primeiroprojeto.model.bean.Emprestimo;
 import primeiroprojeto.model.bean.Espacos_locacao;
 import primeiroprojeto.model.bean.Itens_locacao;
 
@@ -40,6 +43,8 @@ public class FXMLTelaPrincipalController implements Initializable {
     private TableView<Itens_locacao> MaterialView;
     @FXML
     private TableView<Espacos_locacao> espacosTableView;
+    @FXML
+    private TableView<Emprestimo> emprestimosTableView;
     @FXML
     private TableColumn<Aluno, String> nomeCol;
     @FXML
@@ -67,9 +72,17 @@ public class FXMLTelaPrincipalController implements Initializable {
     @FXML
     private TableColumn<Espacos_locacao, Boolean> statusEspacCol;
     
+    @FXML
+    private TableColumn<Emprestimo, Integer> matEmprestCol;
+    @FXML
+    private TableColumn<Emprestimo, Date> dataEmprestCol;
+    @FXML
+    private TableColumn<Emprestimo, Boolean> statusEmprestCol;
+    
     ObservableList<Aluno> observableList;
     ObservableList<Itens_locacao> observableListMat;
     ObservableList<Espacos_locacao> observableListEspacos;
+    ObservableList<Emprestimo> observableListEmprestimos;
 
 
     @Override
@@ -77,6 +90,7 @@ public class FXMLTelaPrincipalController implements Initializable {
         loadAlunos();
         loadMateriais();
         loadEspacos();
+        loadEmprestimos();
     }
     
     private void loadAlunos() {
@@ -270,4 +284,15 @@ public class FXMLTelaPrincipalController implements Initializable {
         
     }
     
+    private void loadEmprestimos() {
+        matEmprestCol.setCellValueFactory(new PropertyValueFactory<Emprestimo, Integer>("id_resp_fk"));
+        dataEmprestCol.setCellValueFactory(new PropertyValueFactory<Emprestimo, Date>("data_devolucao"));
+        statusEmprestCol.setCellValueFactory(new PropertyValueFactory<Emprestimo, Boolean>("status"));
+        
+        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+        
+        observableListEmprestimos = FXCollections.observableArrayList(emprestimoDAO.read());
+        tableView.refresh();
+        emprestimosTableView.setItems(observableListEmprestimos);
+    }
 }

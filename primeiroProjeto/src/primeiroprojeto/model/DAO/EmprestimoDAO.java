@@ -16,7 +16,7 @@ import primeiroprojeto.model.bean.Emprestimo;
  * @author Gabriel_S4
  */
 public class EmprestimoDAO {
-    public void create(Emprestimo e) {        
+    /*public void create(Emprestimo e) {        
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
@@ -39,7 +39,7 @@ public class EmprestimoDAO {
         }finally{
             ConnectionFactory.closeConnection(con,stmt);
         }
-    }
+    }*/
     
     public List<Emprestimo> read(){
         Connection con = ConnectionFactory.getConnection();
@@ -54,12 +54,12 @@ public class EmprestimoDAO {
             
             while(rs.next()){
                 Emprestimo emprestimo = new Emprestimo();
-                emprestimo.setSituacao(rs.getBoolean("situacao"));
-                emprestimo.setData_emprestimo(rs.getString("data_emprestimo"));
-                emprestimo.setHora_emprestimo(rs.getString("hora_emprestimo"));
-                emprestimo.setData_devolucao(rs.getString("data_devolucao"));
+                emprestimo.setStatus(rs.getBoolean("status"));
+                emprestimo.setData_emprestimo(rs.getDate("data_emprestimo"));
+                emprestimo.setData_devolucao(rs.getDate("data_devolucao"));
                 emprestimo.setId_resp_fk(rs.getInt("id_resp_fk"));
                 emprestimo.setId_item_loc(rs.getInt("id_item_loc"));
+                emprestimo.setId_item_loc(rs.getInt("id_espaco_loc"));
                 emprestimo.setMatricula_func_fk(rs.getInt("matricula_func_fk"));
                 emprestimo.setId(rs.getInt("id"));
                 
@@ -74,7 +74,7 @@ public class EmprestimoDAO {
         return emprestimos;
     }
     
-    public void update(Emprestimo e) {        
+    /*public void update(Emprestimo e) {        
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
@@ -113,5 +113,5 @@ public class EmprestimoDAO {
         }finally{
             ConnectionFactory.closeConnection(con,stmt);
         }
-    }
+    }*/
  }
