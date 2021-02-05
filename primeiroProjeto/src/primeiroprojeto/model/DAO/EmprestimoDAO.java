@@ -59,7 +59,7 @@ public class EmprestimoDAO {
                 emprestimo.setData_devolucao(rs.getDate("data_devolucao"));
                 emprestimo.setId_resp_fk(rs.getInt("id_resp_fk"));
                 emprestimo.setId_item_loc(rs.getInt("id_item_loc"));
-                emprestimo.setId_item_loc(rs.getInt("id_espaco_loc"));
+                emprestimo.setId_item_loc(rs.getInt("id_espacos_loc"));
                 emprestimo.setMatricula_func_fk(rs.getInt("matricula_func_fk"));
                 emprestimo.setId(rs.getInt("id"));
                 
@@ -97,13 +97,13 @@ public class EmprestimoDAO {
         }finally{
             ConnectionFactory.closeConnection(con,stmt);
         }
-    }
+    }*/
     public void delete(Emprestimo e) {        
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try{
-            stmt = con.prepareStatement("DELETE * from emprestimo WHERE id = ?");
+            stmt = con.prepareStatement("DELETE FROM emprestimo WHERE id = ?");
             stmt.setInt(1,e.getId());
             
             stmt.executeUpdate();
@@ -113,5 +113,5 @@ public class EmprestimoDAO {
         }finally{
             ConnectionFactory.closeConnection(con,stmt);
         }
-    }*/
+    }
  }

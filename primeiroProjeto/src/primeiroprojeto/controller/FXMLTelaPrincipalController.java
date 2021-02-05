@@ -295,4 +295,16 @@ public class FXMLTelaPrincipalController implements Initializable {
         tableView.refresh();
         emprestimosTableView.setItems(observableListEmprestimos);
     }
+    
+    @FXML
+    private void deletarEmprestimo(ActionEvent event) {
+        Emprestimo selectedItem = emprestimosTableView.getSelectionModel().getSelectedItem();
+        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+        
+        if (selectedItem != null) {   
+            emprestimoDAO.delete(selectedItem);
+            emprestimosTableView.refresh();
+        }
+        
+    }
 }

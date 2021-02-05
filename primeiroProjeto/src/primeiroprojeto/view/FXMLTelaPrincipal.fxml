@@ -150,17 +150,17 @@
                               <TableColumn fx:id="statusEmprestCol" prefWidth="154.0" text="Status" />
                            </columns>
                         </TableView>
-                        <Button layoutX="300.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
+                        <Button layoutX="300.0" layoutY="332.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Casdatrar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="399.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaEditarEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Ver Detalhes" textFill="#fffefe">
+                        <Button layoutX="399.0" layoutY="332.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Ver Detalhes" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="495.0" layoutY="332.0" mnemonicParsing="false" onAction="#bloquearEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Deletar" textFill="#fffefe">
+                        <Button layoutX="495.0" layoutY="332.0" mnemonicParsing="false" onAction="#deletarEmprestimo" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Deletar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
