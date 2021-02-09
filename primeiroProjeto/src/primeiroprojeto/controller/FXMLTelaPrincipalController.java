@@ -284,6 +284,21 @@ public class FXMLTelaPrincipalController implements Initializable {
         
     }
     
+    @FXML
+    private void handleJanelaCadastrarEmprestimo() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLCadastrarEmprestimo.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        Stage stage = new Stage();
+        
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setIconified(false);
+        stage.setTitle("Cadastrar Emprestimo");
+        stage.show();
+    }
+    
     private void loadEmprestimos() {
         matEmprestCol.setCellValueFactory(new PropertyValueFactory<Emprestimo, Integer>("id_resp_fk"));
         dataEmprestCol.setCellValueFactory(new PropertyValueFactory<Emprestimo, Date>("data_devolucao"));

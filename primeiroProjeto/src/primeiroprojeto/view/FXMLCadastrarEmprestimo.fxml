@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="371.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="371.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLCadastrarEmprestimoController">
    <children>
-      <TextField layoutX="48.0" layoutY="96.0" prefHeight="25.0" prefWidth="440.0" promptText="Matricula do aluno" />
+      <TextField fx:id="matricula" layoutX="48.0" layoutY="96.0" prefHeight="25.0" prefWidth="440.0" promptText="Matricula do aluno" />
       <Label layoutX="49.0" layoutY="215.0" text="Data de Entrega">
          <font>
             <Font size="18.0" />
@@ -28,7 +28,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="181.0" layoutY="298.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Buttonc" stylesheets="@default.css" text="Cancelar" textFill="#fffefe">
+      <Button fx:id="btnCancelar" layoutX="181.0" layoutY="298.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="0.0" prefWidth="79.0" styleClass="Buttonc" stylesheets="@default.css" text="Cancelar" textFill="#fffefe">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -38,15 +38,15 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox layoutX="48.0" layoutY="175.0" prefWidth="150.0" styleClass="Button" />
-      <DatePicker layoutX="48.0" layoutY="243.0" />
-      <ComboBox layoutX="338.0" layoutY="175.0" prefWidth="150.0" />
-      <RadioButton layoutX="48.0" layoutY="146.0" mnemonicParsing="false" text="Materiais">
+      <ComboBox fx:id="opMaterial" layoutX="48.0" layoutY="175.0" prefWidth="150.0" styleClass="Button" />
+      <DatePicker fx:id="dataEntrega" layoutX="48.0" layoutY="243.0" />
+      <ComboBox fx:id="opEspacos" layoutX="338.0" layoutY="175.0" prefWidth="150.0" />
+      <RadioButton fx:id="tipoMaterial" layoutX="48.0" layoutY="146.0" mnemonicParsing="false" text="Materiais">
          <font>
             <Font size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="338.0" layoutY="146.0" mnemonicParsing="false" text="Espaços">
+      <RadioButton fx:id="tipoEspaco" layoutX="338.0" layoutY="146.0" mnemonicParsing="false" text="Espaços">
          <font>
             <Font size="18.0" />
          </font>
