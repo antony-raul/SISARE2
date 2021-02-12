@@ -322,4 +322,27 @@ public class FXMLTelaPrincipalController implements Initializable {
         }
         
     }
+    
+    @FXML
+    private void handleJanelaDetalhesEmprestimos(ActionEvent event) throws IOException {
+        Emprestimo selectedItem = emprestimosTableView.getSelectionModel().getSelectedItem();
+        
+        if (selectedItem != null) {
+            Node node = (Node) event.getSource();
+            
+            Stage stage = (Stage) node.getScene().getWindow();
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLDetalhesEmprestimo.fxml"));
+            
+            stage.setUserData(selectedItem);
+            
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setIconified(false);
+            stage.setTitle("Detalhes do Empréstimo");
+            stage.show();
+        }
+        
+    }
 }

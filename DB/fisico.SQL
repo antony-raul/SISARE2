@@ -39,7 +39,7 @@ id_resp_fk INTEGER,
 matricula_func_fk INTEGER(4),
 id_item_loc INTEGER,
 id_espacos_loc INTEGER,
-FOREIGN KEY(id_resp_fk) REFERENCES aluno (id_resp),
+FOREIGN KEY(id_resp_fk) REFERENCES aluno (matricula),
 FOREIGN KEY(matricula_func_FK) REFERENCES funcionario (matricula),
 FOREIGN KEY(id_item_loc) REFERENCES itens_locacao (id),
 FOREIGN KEY(id_espacos_loc) REFERENCES espacos_locacao (id)

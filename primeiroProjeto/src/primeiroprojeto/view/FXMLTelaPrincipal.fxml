@@ -155,7 +155,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="399.0" layoutY="332.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Ver Detalhes" textFill="#fffefe">
+                        <Button layoutX="399.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaDetalhesEmprestimos" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Ver Detalhes" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
