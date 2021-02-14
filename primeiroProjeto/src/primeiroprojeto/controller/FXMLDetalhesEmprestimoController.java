@@ -33,11 +33,11 @@ public class FXMLDetalhesEmprestimoController implements Initializable {
     }    
     
     private void loadEmprestimo(){
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
+        //Node node = (Node) event.getSource();
+        //Stage stage = (Stage) node.getScene().getWindow();
         
-        Emprestimo emprestimo = (Emprestimo) stage.getUserData();
-        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+        //Emprestimo emprestimo = (Emprestimo) stage.getUserData();
+        //EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
                 
     }
 }

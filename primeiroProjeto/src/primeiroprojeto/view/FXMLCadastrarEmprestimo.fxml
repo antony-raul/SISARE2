@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -23,7 +24,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="277.0" layoutY="298.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Resevar" textFill="#fffefe">
+      <Button layoutX="277.0" layoutY="298.0" mnemonicParsing="false" onAction="#btnResevar" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Resevar" textFill="#fffefe">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -41,12 +42,15 @@
       <ComboBox fx:id="opMaterial" layoutX="48.0" layoutY="175.0" prefWidth="150.0" styleClass="Button" />
       <DatePicker fx:id="dataEntrega" layoutX="48.0" layoutY="243.0" />
       <ComboBox fx:id="opEspacos" layoutX="338.0" layoutY="175.0" prefWidth="150.0" />
-      <RadioButton fx:id="tipoMaterial" layoutX="48.0" layoutY="146.0" mnemonicParsing="false" text="Materiais">
+      <RadioButton fx:id="tipoMaterial" layoutX="48.0" layoutY="146.0" mnemonicParsing="false" selected="true" text="Materiais">
          <font>
             <Font size="18.0" />
          </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="tipo" />
+         </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="tipoEspaco" layoutX="338.0" layoutY="146.0" mnemonicParsing="false" text="Espaços">
+      <RadioButton fx:id="tipoEspaco" layoutX="338.0" layoutY="146.0" mnemonicParsing="false" text="Espaços" toggleGroup="$tipo">
          <font>
             <Font size="18.0" />
          </font>

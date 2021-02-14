@@ -6,7 +6,11 @@
 package primeiroprojeto.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,9 +19,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import primeiroprojeto.model.DAO.EmprestimoDAO;
+import primeiroprojeto.model.DAO.Espacos_locacaoDAO;
+import primeiroprojeto.model.DAO.Itens_locacaoDAO;
 import primeiroprojeto.model.bean.Emprestimo;
+import primeiroprojeto.model.bean.Espacos_locacao;
+import primeiroprojeto.model.bean.Itens_locacao;
 
 /**
  * FXML Controller class
@@ -32,25 +41,33 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
     private Button btnCancelar;
 
     @FXML
-    private ComboBox<?> opMaterial;
+    private ComboBox<Itens_locacao> opMaterial;
 
     @FXML
     private DatePicker dataEntrega;
 
     @FXML
-    private ComboBox<?> opEspacos;
+    private ComboBox<Espacos_locacao> opEspacos;
 
     @FXML
     private RadioButton tipoMaterial;
 
     @FXML
     private RadioButton tipoEspaco;
+    
+    @FXML
+    private ToggleGroup tipo;
+    
+    //private List<Espacos_locacao> espacos = new ArrayList<>();
+    ObservableList<Espacos_locacao> observableListEspacos;
+    ObservableList<Itens_locacao> observableListMateriais;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        carregarEspacos();
+        carregarMaterias();
     }    
     
     @FXML
@@ -58,12 +75,33 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         Emprestimo emprestimo = new Emprestimo();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         
+        RadioButton radio = (RadioButton) tipo.getSelectedToggle();
         
+        System.out.println(radio.getText());
         
         matricula.setText("");
         
                 
         
+    }
+    
+    @FXML
+    private void carregarEspacos(){
+        
+        Espacos_locacaoDAO espacoDAO = new Espacos_locacaoDAO();
+        
+        observableListEspacos = FXCollections.observableArrayList(espacoDAO.read());
+        
+        opEspacos.setItems(observableListEspacos);
+    }
+    @FXML
+    private void carregarMaterias(){
+        
+        Itens_locacaoDAO materialDAO = new Itens_locacaoDAO();
+        
+        observableListMateriais = FXCollections.observableArrayList(materialDAO.read());
+        
+        opMaterial.setItems(observableListMateriais);
     }
     
     @FXML

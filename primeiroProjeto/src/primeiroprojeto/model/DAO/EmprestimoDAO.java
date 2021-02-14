@@ -16,21 +16,23 @@ import primeiroprojeto.model.bean.Emprestimo;
  * @author Gabriel_S4
  */
 public class EmprestimoDAO {
-    /*public void create(Emprestimo e) {        
+    public void create(Emprestimo e) {        
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try{
             stmt = con.prepareStatement("INSERT INTO emprestimo "
-                + "(situacao,data_emprestimo,hora_emprestimo,data_devolucao,id_resp_fk,id_item_loc,matricula_func_fk,id) VALUES (?,?,?,?,?,?,?,?)");
-            stmt.setBoolean(1,e.isSituacao());
-            stmt.setString(2,e.getData_emprestimo());
-            stmt.setString(3,e.getHora_emprestimo());
-            stmt.setString(4,e.getData_devolucao());
-            stmt.setInt(5,e.getId_resp_fk());
-            stmt.setInt(6,e.getId_item_loc());
-            stmt.setInt(7,e.getMatricula_func_fk());
-            stmt.setInt(8,e.getId());
+                + "(data_emprestimo,data_devolucao,id_resp_fk,id_item_loc,id_espaco_loc,matricula_func_fk,id,status) VALUES (?,?,?,?,?,?,?,?)");
+            
+            
+            stmt.setDate(1, e.getData_emprestimo());
+            stmt.setDate(2, e.getData_devolucao());
+            stmt.setInt(3,e.getId_resp_fk());
+            stmt.setInt(4,e.getId_item_loc());
+            stmt.setInt(5, e.getId_item_loc());
+            stmt.setInt(6,e.getMatricula_func_fk());
+            stmt.setInt(7,e.getId());
+            stmt.setBoolean(8, e.isStatus());
             
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!!!");
@@ -39,7 +41,7 @@ public class EmprestimoDAO {
         }finally{
             ConnectionFactory.closeConnection(con,stmt);
         }
-    }*/
+    }
     
     public List<Emprestimo> read(){
         Connection con = ConnectionFactory.getConnection();
