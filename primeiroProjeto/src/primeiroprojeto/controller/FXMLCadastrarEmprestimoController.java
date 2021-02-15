@@ -75,12 +75,14 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         Emprestimo emprestimo = new Emprestimo();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         
-        RadioButton radio = (RadioButton) tipo.getSelectedToggle();
+        emprestimo.setMatricula_func_fk(Integer.parseInt(matricula.getText()));
         
-        System.out.println(radio.getText());
+        //emprestimoDAO.create(emprestimo);
         
         matricula.setText("");
         
+        //RadioButton radio = (RadioButton) tipo.getSelectedToggle();
+        //System.out.println(radio.getText());
                 
         
     }

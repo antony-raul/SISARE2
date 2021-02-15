@@ -55,8 +55,9 @@ public class EmprestimoDAO {
             rs = stmt.executeQuery();
             
             while(rs.next()){
+                
                 Emprestimo emprestimo = new Emprestimo();
-                emprestimo.setStatus(rs.getBoolean("status"));
+                
                 emprestimo.setData_emprestimo(rs.getDate("data_emprestimo"));
                 emprestimo.setData_devolucao(rs.getDate("data_devolucao"));
                 emprestimo.setId_resp_fk(rs.getInt("id_resp_fk"));
@@ -64,6 +65,7 @@ public class EmprestimoDAO {
                 emprestimo.setId_item_loc(rs.getInt("id_espacos_loc"));
                 emprestimo.setMatricula_func_fk(rs.getInt("matricula_func_fk"));
                 emprestimo.setId(rs.getInt("id"));
+                emprestimo.setStatus(rs.getBoolean("status"));
                 
                 emprestimos.add(emprestimo);
             }
@@ -76,20 +78,22 @@ public class EmprestimoDAO {
         return emprestimos;
     }
     
-    /*public void update(Emprestimo e) {        
+    public void update(Emprestimo e) {        
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         
         try{
             stmt = con.prepareStatement("UPDATE emprestimo SET "
-                + "situacao = ?,data_emprestimo = ?,hora_emprestimo = ? ,data_devolucao = ? ,id_resp_fk,id_item_loc = ? ,matricula_func_fk = ? WHERE id = ?");
-            stmt.setBoolean(1,e.isSituacao());
-            stmt.setString(2,e.getData_emprestimo());
-            stmt.setString(3,e.getHora_emprestimo());
-            stmt.setString(4,e.getData_devolucao());
-            stmt.setInt(5,e.getId_resp_fk());
-            stmt.setInt(6,e.getId_item_loc());
-            stmt.setInt(7,e.getMatricula_func_fk());
+                + "data_emprestimo = ?,data_devolucao = ? ,id_resp_fk,id_item_loc = ?,id_espaco_loc = ? ,matricula_func_fk = ?,status = ? WHERE id = ?");
+            
+            
+            stmt.setDate(1, e.getData_emprestimo());
+            stmt.setDate(2,e.getData_devolucao());
+            stmt.setInt(3,e.getId_resp_fk());
+            stmt.setInt(4,e.getId_item_loc());
+            stmt.setInt(5, e.getId_espaco_loc());
+            stmt.setInt(6,e.getMatricula_func_fk());
+            stmt.setBoolean(7, e.isStatus());
             stmt.setInt(8,e.getId());
             
             stmt.executeUpdate();
@@ -99,7 +103,7 @@ public class EmprestimoDAO {
         }finally{
             ConnectionFactory.closeConnection(con,stmt);
         }
-    }*/
+    }
     public void delete(Emprestimo e) {        
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
