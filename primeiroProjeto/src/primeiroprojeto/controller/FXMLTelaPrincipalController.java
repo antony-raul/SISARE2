@@ -332,7 +332,17 @@ public class FXMLTelaPrincipalController implements Initializable {
             
             Stage stage = (Stage) node.getScene().getWindow();
             
-            Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLDetalhesEmprestimo.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            
+            loader.setLocation(getClass().getResource("/primeiroprojeto/view/FXMLDetalhesEmprestimo.fxml"));
+            
+            FXMLDetalhesEmprestimoController controller = new FXMLDetalhesEmprestimoController();
+            
+            controller.setEmprestimo(selectedItem);
+            
+            loader.setController(controller);
+            
+            Parent root = loader.load();
             
             stage.setUserData(selectedItem);
             
