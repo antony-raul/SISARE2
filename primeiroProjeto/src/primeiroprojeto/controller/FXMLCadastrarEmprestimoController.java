@@ -5,8 +5,12 @@
  */
 package primeiroprojeto.controller;
 
+import static java.lang.String.format;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -75,15 +79,30 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         Emprestimo emprestimo = new Emprestimo();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         
-        emprestimo.setMatricula_func_fk(Integer.parseInt(matricula.getText()));
+        
+        //emprestimo.setData_emprestimo(format.parse(getDateTime()));
+        //emprestimo.setId_resp_fk(Integer.parseInt(matricula.getText()));
+        //emprestimo.setData_devolucao(dataEntrega);
+        
+        
+        
         
         //emprestimoDAO.create(emprestimo);
         
         matricula.setText("");
         
+        
         //RadioButton radio = (RadioButton) tipo.getSelectedToggle();
         //System.out.println(radio.getText());
                 
+        
+    }
+    
+    @FXML
+    private String getDateTime(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
+        Date date = new Date();
+        return dateFormat.format(date);
         
     }
     

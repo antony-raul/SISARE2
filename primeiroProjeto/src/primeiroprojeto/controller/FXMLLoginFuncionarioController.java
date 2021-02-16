@@ -7,6 +7,9 @@ package primeiroprojeto.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +34,7 @@ public class FXMLLoginFuncionarioController implements Initializable {
     private TextField matricula;
     @FXML
     private TextField senha;
+    String matFuncLog;
     
 
     
@@ -43,6 +47,10 @@ public class FXMLLoginFuncionarioController implements Initializable {
         if(dao.checkLogin(matricula.getText() , senha.getText())){
             System.out.println(" Acesso permitido");
             
+            matFuncLog = matricula.getText();
+            
+            
+           
         Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLTelaPrincipal.fxml"));
         
         Scene scene = new Scene(root);
@@ -64,6 +72,10 @@ public class FXMLLoginFuncionarioController implements Initializable {
         }
         
     }
+
+    
+    
+    
     
     @FXML
     private void handleNovaJanela() throws IOException {
