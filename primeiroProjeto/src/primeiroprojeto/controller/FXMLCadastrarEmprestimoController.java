@@ -8,7 +8,11 @@ package primeiroprojeto.controller;
 import static java.lang.String.format;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -72,10 +76,11 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         carregarEspacos();
         carregarMaterias();
+        
     }    
     
     @FXML
-    private void btnResevar(ActionEvent event) {
+    private void btnResevar(ActionEvent event) throws ParseException {
         Emprestimo emprestimo = new Emprestimo();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         
@@ -94,13 +99,25 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         
         //RadioButton radio = (RadioButton) tipo.getSelectedToggle();
         //System.out.println(radio.getText());
+        getDatePicker();
                 
         
+    }
+
+    private String getDatePicker() throws ParseException {
+        //LocalDate localDate = dataEntrega.getValue();
+        String str = dataEntrega.getEditor().getText();
+        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        //String str = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        //Date date = dateFormat.parse(str);
+        //return date
+        
+        return str;
     }
     
     @FXML
     private String getDateTime(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
+        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
         Date date = new Date();
         return dateFormat.format(date);
         
