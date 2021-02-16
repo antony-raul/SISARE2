@@ -29,7 +29,7 @@ public class EmprestimoDAO {
             stmt.setDate(2, e.getData_devolucao());
             stmt.setInt(3,e.getId_resp_fk());
             stmt.setInt(4,e.getId_item_loc());
-            stmt.setInt(5, e.getId_item_loc());
+            stmt.setInt(5, e.getId_espaco_loc());
             stmt.setInt(6,e.getMatricula_func_fk());
             stmt.setInt(7,e.getId());
             stmt.setBoolean(8, e.isStatus());
@@ -62,7 +62,7 @@ public class EmprestimoDAO {
                 emprestimo.setData_devolucao(rs.getDate("data_devolucao"));
                 emprestimo.setId_resp_fk(rs.getInt("id_resp_fk"));
                 emprestimo.setId_item_loc(rs.getInt("id_item_loc"));
-                emprestimo.setId_item_loc(rs.getInt("id_espacos_loc"));
+                emprestimo.setId_espaco_loc(rs.getInt("id_espacos_loc"));
                 emprestimo.setMatricula_func_fk(rs.getInt("matricula_func_fk"));
                 emprestimo.setId(rs.getInt("id"));
                 emprestimo.setStatus(rs.getBoolean("status"));

@@ -327,6 +327,7 @@ public class FXMLTelaPrincipalController implements Initializable {
     private void handleJanelaDetalhesEmprestimos(ActionEvent event) throws IOException {
         Emprestimo selectedItem = emprestimosTableView.getSelectionModel().getSelectedItem();
         
+        
         if (selectedItem != null) {
             Node node = (Node) event.getSource();
             
@@ -352,6 +353,7 @@ public class FXMLTelaPrincipalController implements Initializable {
             stage.setIconified(false);
             stage.setTitle("Detalhes do Empréstimo");
             stage.show();
+            
         }
         
     }
