@@ -7,11 +7,9 @@ package primeiroprojeto.controller;
 
 import static java.lang.String.format;
 import java.net.URL;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -84,43 +82,36 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         Emprestimo emprestimo = new Emprestimo();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         
+        emprestimo.setData_emprestimo(getDateTime());
+        emprestimo.setId_resp_fk(Integer.parseInt(matricula.getText()));
+        emprestimo.setData_devolucao(getDatePicker());
+        emprestimo.setId_item_loc(7);
+        emprestimo.setMatricula_func_fk(201220);
+        emprestimo.setId_espaco_loc(43);
+        emprestimo.setId(5);
         
-        //emprestimo.setData_emprestimo(format.parse(getDateTime()));
-        //emprestimo.setId_resp_fk(Integer.parseInt(matricula.getText()));
-        //emprestimo.setData_devolucao(dataEntrega);
+        emprestimoDAO.create(emprestimo);
         
-        
-        
-        
-        //emprestimoDAO.create(emprestimo);
-        
-        matricula.setText("");
+        //matricula.setText("");
         
         
         //RadioButton radio = (RadioButton) tipo.getSelectedToggle();
         //System.out.println(radio.getText());
-        getDatePicker();
-                
-        
     }
 
-    private String getDatePicker() throws ParseException {
-        //LocalDate localDate = dataEntrega.getValue();
-        String str = dataEntrega.getEditor().getText();
-        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
-        //String str = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        //Date date = dateFormat.parse(str);
-        //return date
-        
-        return str;
+    private java.sql.Date getDatePicker() {
+        LocalDate localDate = dataEntrega.getValue();
+        java.sql.Date dateSql = java.sql.Date.valueOf(localDate);
+
+        return dateSql;
     }
     
     @FXML
-    private String getDateTime(){
-        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+    private java.sql.Date getDateTime(){
         Date date = new Date();
-        return dateFormat.format(date);
+        java.sql.Date dateSql = new java.sql.Date(date.getTime());
         
+        return dateSql;
     }
     
     @FXML
