@@ -22,7 +22,7 @@ public class EmprestimoDAO {
         
         try{
             stmt = con.prepareStatement("INSERT INTO emprestimo "
-                + "(data_emprestimo,data_devolucao,id_resp_fk,id_item_loc,id_espacos_loc,matricula_func_fk,id,status) VALUES (?,?,?,?,?,?,?,?)");
+                + "(data_emprestimo,data_devolucao,id_resp_fk,id_item_loc,id_espacos_loc,matricula_func_fk,status) VALUES (?,?,?,?,?,?,?)");
             
             
             stmt.setDate(1, e.getData_emprestimo());
@@ -31,8 +31,7 @@ public class EmprestimoDAO {
             stmt.setInt(4,e.getId_item_loc());
             stmt.setInt(5, e.getId_espaco_loc());
             stmt.setInt(6,e.getMatricula_func_fk());
-            stmt.setInt(7,e.getId());
-            stmt.setBoolean(8, true);
+            stmt.setBoolean(7, true);
             
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!!!");

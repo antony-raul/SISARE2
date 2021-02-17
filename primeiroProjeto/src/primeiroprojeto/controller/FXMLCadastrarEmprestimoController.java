@@ -56,6 +56,7 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
 
     @FXML
     private ComboBox<Espacos_locacao> opEspacos;
+    
 
     @FXML
     private RadioButton tipoMaterial;
@@ -89,17 +90,25 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         
         Funcionario funcionario = (Funcionario) stg.getUserData();
         
-        //emprestimo.setData_emprestimo(getDateTime());
-        //emprestimo.setId_resp_fk(Integer.parseInt(matricula.getText()));
-        //emprestimo.setData_devolucao(getDatePicker());
-        //emprestimo.setId_item_loc(1);
-        //emprestimo.setMatricula_func_fk(funcionario.getMatricula());
-        //emprestimo.setId_espaco_loc(1);
-        //emprestimo.setId(1);
-        
         
         Itens_locacaoDAO itemDao = new Itens_locacaoDAO();
-        //String nome = opMaterial.getValue();
+        Itens_locacao nomeMaterial = opMaterial.getValue();
+        
+        int idItem = itemDao.selectIDItem(nomeMaterial.getNome());
+        
+        Espacos_locacaoDAO espacoDao = new Espacos_locacaoDAO();
+        Espacos_locacao nomeEspaco = opEspacos.getValue();
+        
+        int idEspaco = espacoDao.selectIDEspaco(nomeEspaco.getNome());
+        
+        System.out.println(idItem);
+        
+        emprestimo.setData_emprestimo(getDateTime());
+        emprestimo.setId_resp_fk(Integer.parseInt(matricula.getText()));
+        emprestimo.setData_devolucao(getDatePicker());
+        emprestimo.setId_item_loc(idItem);
+        emprestimo.setMatricula_func_fk(funcionario.getMatricula());
+        emprestimo.setId_espaco_loc(idEspaco);
         
         
         //emprestimoDAO.create(emprestimo);
