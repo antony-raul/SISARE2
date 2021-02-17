@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import primeiroprojeto.model.DAO.FuncionarioDAO;
 import primeiroprojeto.model.DAO.UserDAO;
+import primeiroprojeto.model.bean.Funcionario;
 import primeiroprojeto.model.bean.User;
 
 /**
@@ -42,6 +43,7 @@ public class FXMLLoginFuncionarioController implements Initializable {
     private void BotaoLoginFuc(ActionEvent event) throws IOException  {
         
         FuncionarioDAO  dao = new FuncionarioDAO();
+        Funcionario funcionario = new Funcionario();
         
         
         if(dao.checkLogin(matricula.getText() , senha.getText())){
@@ -53,9 +55,12 @@ public class FXMLLoginFuncionarioController implements Initializable {
            
         Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLTelaPrincipal.fxml"));
         
+        funcionario.setMatricula(Integer.parseInt(matFuncLog));
+        
         Scene scene = new Scene(root);
         
         Stage stage = new Stage();
+        stage.setUserData(funcionario);
         
         stage.setScene(scene);
         stage.setResizable(false);

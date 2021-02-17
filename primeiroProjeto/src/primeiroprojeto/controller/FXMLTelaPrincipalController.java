@@ -29,6 +29,7 @@ import primeiroprojeto.model.DAO.Itens_locacaoDAO;
 import primeiroprojeto.model.bean.Aluno;
 import primeiroprojeto.model.bean.Emprestimo;
 import primeiroprojeto.model.bean.Espacos_locacao;
+import primeiroprojeto.model.bean.Funcionario;
 import primeiroprojeto.model.bean.Itens_locacao;
 
 /**
@@ -285,12 +286,19 @@ public class FXMLTelaPrincipalController implements Initializable {
     }
     
     @FXML
-    private void handleJanelaCadastrarEmprestimo() throws IOException {
+    private void handleJanelaCadastrarEmprestimo(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLCadastrarEmprestimo.fxml"));
+        
+        Node node = (Node) event.getSource();
+        Stage stg = (Stage) node.getScene().getWindow();
+        
+        Funcionario funcionario = (Funcionario) stg.getUserData();
         
         Scene scene = new Scene(root);
         
         Stage stage = new Stage();
+        
+        stage.setUserData(funcionario);
         
         stage.setScene(scene);
         stage.setResizable(false);

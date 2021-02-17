@@ -20,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -32,6 +33,7 @@ import primeiroprojeto.model.DAO.Espacos_locacaoDAO;
 import primeiroprojeto.model.DAO.Itens_locacaoDAO;
 import primeiroprojeto.model.bean.Emprestimo;
 import primeiroprojeto.model.bean.Espacos_locacao;
+import primeiroprojeto.model.bean.Funcionario;
 import primeiroprojeto.model.bean.Itens_locacao;
 
 /**
@@ -82,17 +84,22 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         Emprestimo emprestimo = new Emprestimo();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         
+        Node node = (Node) event.getSource();
+        Stage stg = (Stage) node.getScene().getWindow();
+        
+        Funcionario funcionario = (Funcionario) stg.getUserData();
+        
         //emprestimo.setData_emprestimo(getDateTime());
         //emprestimo.setId_resp_fk(Integer.parseInt(matricula.getText()));
         //emprestimo.setData_devolucao(getDatePicker());
         //emprestimo.setId_item_loc(1);
-        //emprestimo.setMatricula_func_fk(123);
+        //emprestimo.setMatricula_func_fk(funcionario.getMatricula());
         //emprestimo.setId_espaco_loc(1);
         //emprestimo.setId(1);
         
         
         Itens_locacaoDAO itemDao = new Itens_locacaoDAO();
-        String nome = opMaterial.getValue();
+        //String nome = opMaterial.getValue();
         
         
         //emprestimoDAO.create(emprestimo);
@@ -128,6 +135,7 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         
         opEspacos.setItems(observableListEspacos);
     }
+    
     @FXML
     private void carregarMaterias(){
         
