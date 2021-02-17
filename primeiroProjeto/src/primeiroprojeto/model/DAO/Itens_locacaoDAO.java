@@ -154,4 +154,31 @@ public class Itens_locacaoDAO {
 
         return nomeItem;
     }
+    
+    public int selectIDItem(String nome){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int idItem;
+        idItem = 0;
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM itens_locacao WHERE nome = ?");
+            stmt.setString(1,nome);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                idItem = rs.getInt("id");
+            }
+            
+                      
+        } catch (SQLException ex) {
+            Logger.getLogger(EmprestimoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return idItem;
+    }
+    
 }

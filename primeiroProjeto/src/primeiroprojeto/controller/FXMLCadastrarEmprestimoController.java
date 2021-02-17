@@ -82,15 +82,20 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         Emprestimo emprestimo = new Emprestimo();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         
-        emprestimo.setData_emprestimo(getDateTime());
-        emprestimo.setId_resp_fk(Integer.parseInt(matricula.getText()));
-        emprestimo.setData_devolucao(getDatePicker());
-        emprestimo.setId_item_loc(7);
-        emprestimo.setMatricula_func_fk(201220);
-        emprestimo.setId_espaco_loc(43);
-        emprestimo.setId(5);
+        //emprestimo.setData_emprestimo(getDateTime());
+        //emprestimo.setId_resp_fk(Integer.parseInt(matricula.getText()));
+        //emprestimo.setData_devolucao(getDatePicker());
+        //emprestimo.setId_item_loc(1);
+        //emprestimo.setMatricula_func_fk(123);
+        //emprestimo.setId_espaco_loc(1);
+        //emprestimo.setId(1);
         
-        emprestimoDAO.create(emprestimo);
+        
+        Itens_locacaoDAO itemDao = new Itens_locacaoDAO();
+        String nome = opMaterial.getValue();
+        
+        
+        //emprestimoDAO.create(emprestimo);
         
         //matricula.setText("");
         
