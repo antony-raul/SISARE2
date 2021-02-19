@@ -83,7 +83,7 @@ public class EmprestimoDAO {
         
         try{
             stmt = con.prepareStatement("UPDATE emprestimo SET "
-                + "data_emprestimo = ?,data_devolucao = ? ,id_resp_fk,id_item_loc = ?,id_espaco_loc = ? ,matricula_func_fk = ?,status = ? WHERE id = ?");
+                + "data_emprestimo = ?,data_devolucao = ? ,id_resp_fk = ?,id_item_loc = ?,id_espaco_loc = ? ,matricula_func_fk = ?,status = ? WHERE id = ?");
             
             
             stmt.setDate(1, e.getData_emprestimo());
@@ -115,6 +115,33 @@ public class EmprestimoDAO {
             JOptionPane.showMessageDialog(null, "Excluido com sucesso!!!");
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro ao exlcuir!!!"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con,stmt);
+        }
+    }
+    
+    public void block(Emprestimo e) {        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try{
+            stmt = con.prepareStatement("UPDATE emprestimo SET "
+                + "data_emprestimo = ?,data_devolucao = ? ,id_resp_fk = ?,id_item_loc = ?,id_espacos_loc = ? ,matricula_func_fk = ?,status = ? WHERE id = ?");
+            
+            
+            stmt.setDate(1, e.getData_emprestimo());
+            stmt.setDate(2,e.getData_devolucao());
+            stmt.setInt(3,e.getId_resp_fk());
+            stmt.setInt(4,e.getId_item_loc());
+            stmt.setInt(5, e.getId_espaco_loc());
+            stmt.setInt(6,e.getMatricula_func_fk());
+            stmt.setBoolean(7, false);
+            stmt.setInt(8,e.getId());
+            
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Bloqueado com sucesso!");
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro ao bloquear!!!"+ex);
         }finally{
             ConnectionFactory.closeConnection(con,stmt);
         }

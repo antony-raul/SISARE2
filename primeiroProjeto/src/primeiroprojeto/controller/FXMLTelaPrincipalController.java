@@ -7,6 +7,8 @@ package primeiroprojeto.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.Clock;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -80,6 +82,7 @@ public class FXMLTelaPrincipalController implements Initializable {
     @FXML
     private TableColumn<Emprestimo, Boolean> statusEmprestCol;
     
+    
     ObservableList<Aluno> observableList;
     ObservableList<Itens_locacao> observableListMat;
     ObservableList<Espacos_locacao> observableListEspacos;
@@ -131,6 +134,18 @@ public class FXMLTelaPrincipalController implements Initializable {
         
         if (selectedAluno != null) {   
             alunoDAO.block(selectedAluno);
+            tableView.refresh();
+        }
+        
+    }
+    
+    @FXML
+    private void desbloquearAluno(ActionEvent event) {
+        Aluno selectedAluno = tableView.getSelectionModel().getSelectedItem();
+        AlunoDAO alunoDAO = new AlunoDAO();
+        
+        if (selectedAluno != null) {   
+            alunoDAO.desbloquear(selectedAluno);
             tableView.refresh();
         }
         
@@ -313,8 +328,29 @@ public class FXMLTelaPrincipalController implements Initializable {
         statusEmprestCol.setCellValueFactory(new PropertyValueFactory<Emprestimo, Boolean>("status"));
         
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+        Clock cl = Clock.systemUTC();
+        LocalDate lt = LocalDate.now();
+        
+        Date date = new Date();
+        Aluno aluno = new Aluno();
+        AlunoDAO alunoDao = new AlunoDAO();
+        
+        
         
         observableListEmprestimos = FXCollections.observableArrayList(emprestimoDAO.read());
+        observableListEmprestimos.forEach(emprestimo->{
+            
+            if(emprestimo.getData_devolucao().before(date)) {
+                    
+                    aluno.setMatricula(emprestimo.getId_resp_fk());
+                    alunoDao.blockAtraso(aluno);
+            }
+            return ;
+        }
+            
+        );
+        
+        
         tableView.refresh();
         emprestimosTableView.setItems(observableListEmprestimos);
     }
@@ -329,6 +365,17 @@ public class FXMLTelaPrincipalController implements Initializable {
             emprestimosTableView.refresh();
         }
         
+    }
+    
+    @FXML
+    private void devolverEmprestimo(ActionEvent event){
+        Emprestimo selectedEmprestimo = emprestimosTableView.getSelectionModel().getSelectedItem();
+        EmprestimoDAO emprestimoDao = new EmprestimoDAO();
+        
+        if (selectedEmprestimo != null) {   
+            emprestimoDao.block(selectedEmprestimo);
+            emprestimosTableView.refresh();
+        }
     }
     
     @FXML
@@ -365,4 +412,6 @@ public class FXMLTelaPrincipalController implements Initializable {
         }
         
     }
+    
+    
 }

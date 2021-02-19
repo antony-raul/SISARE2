@@ -34,7 +34,7 @@ public class AlunoDAO {
             stmt.setString(3, a.getRua());
             stmt.setString(4, a.getCurso());
             stmt.setInt(5, a.getNumero());
-            stmt.setBoolean(6, a.getAtivo());
+            stmt.setBoolean(6, a.isAtivo());
             
             stmt.executeUpdate();
             
@@ -92,7 +92,7 @@ public class AlunoDAO {
             stmt.setString(3, a.getRua());
             stmt.setString(4, a.getCurso());
             stmt.setInt(5, a.getNumero());
-            stmt.setBoolean(6, a.getAtivo());
+            stmt.setBoolean(6, a.isAtivo());
             stmt.setInt(7, a.getMatricula());
             
             stmt.executeUpdate();
@@ -111,20 +111,58 @@ public class AlunoDAO {
         
         try {
             
-            stmt = con.prepareStatement("UPDATE aluno SET matricula = ?, nome = ?, rua = ?, curso = ?, numero = ?, ativo = ? WHERE matricula = ?");
-            stmt.setInt(1, a.getMatricula());
-            stmt.setString(2, a.getNome());
-            stmt.setString(3, a.getRua());
-            stmt.setString(4, a.getCurso());
-            stmt.setInt(5, a.getNumero());
-            stmt.setBoolean(6, false);
-            stmt.setInt(7, a.getMatricula());
+            stmt = con.prepareStatement("UPDATE aluno SET ativo = ? WHERE matricula = ?");
+            
+            stmt.setBoolean(1, false);
+            stmt.setInt(2, a.getMatricula());
             
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Bloqueado com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao bloquear!"+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public void desbloquear(Aluno a) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            
+            stmt = con.prepareStatement("UPDATE aluno SET ativo = ? WHERE matricula = ?");
+            
+            stmt.setBoolean(1, true);
+            stmt.setInt(2, a.getMatricula());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Desbloqueado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao desbloquear!"+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public void blockAtraso(Aluno a) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            
+            stmt = con.prepareStatement("UPDATE aluno SET ativo = ? WHERE matricula = ?");
+            
+            stmt.setBoolean(1, false);
+            stmt.setInt(2, a.getMatricula());
+            
+            stmt.executeUpdate();
+            
+            
+        } catch (SQLException ex) {
+            
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }

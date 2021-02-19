@@ -57,7 +57,7 @@ public class Aluno {
         this.rua = rua;
     }
     
-    public boolean getAtivo() {
+    public boolean isAtivo() {
         return ativo;
     }
 

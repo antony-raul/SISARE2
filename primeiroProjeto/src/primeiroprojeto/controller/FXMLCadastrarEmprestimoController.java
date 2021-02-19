@@ -82,7 +82,7 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
     
     @FXML
     private void btnResevar(ActionEvent event) throws ParseException {
-        Emprestimo emprestimo = new Emprestimo();
+        /*Emprestimo emprestimo = new Emprestimo();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         
         Node node = (Node) event.getSource();
@@ -111,7 +111,11 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         emprestimo.setId_espaco_loc(idEspaco);
         
         
-        //emprestimoDAO.create(emprestimo);
+        emprestimoDAO.create(emprestimo);*/
+        
+        
+      
+        
         
         //matricula.setText("");
         
