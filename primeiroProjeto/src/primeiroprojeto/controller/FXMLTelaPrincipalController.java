@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import primeiroprojeto.model.DAO.AlunoDAO;
 import primeiroprojeto.model.DAO.EmprestimoDAO;
@@ -40,6 +41,8 @@ import primeiroprojeto.model.bean.Itens_locacao;
  * @author raulz
  */
 public class FXMLTelaPrincipalController implements Initializable {
+     @FXML
+    private Text numAluno;
     @FXML
     private TableView<Aluno> tableView;
     @FXML
@@ -95,6 +98,7 @@ public class FXMLTelaPrincipalController implements Initializable {
         loadMateriais();
         loadEspacos();
         loadEmprestimos();
+        totalAlunos();
     }
     
     private void loadAlunos() {
@@ -110,6 +114,11 @@ public class FXMLTelaPrincipalController implements Initializable {
         observableList = FXCollections.observableArrayList(alunoDAO.read());
         tableView.refresh();
         tableView.setItems(observableList);
+    }
+    AlunoDAO alunoDAO = new AlunoDAO();
+    private void totalAlunos() {
+        
+        numAluno.setText(""+alunoDAO.amount());
     }
     
     @FXML

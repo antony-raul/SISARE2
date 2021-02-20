@@ -80,6 +80,24 @@ public class AlunoDAO {
         return alunos; 
     }
     
+    public ResultSet amount() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT COUNT(matricula) FROM Aluno");
+            rs = stmt.executeQuery();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao contar!"+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        return rs;
+    }
+    
     public void update(Aluno a) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
