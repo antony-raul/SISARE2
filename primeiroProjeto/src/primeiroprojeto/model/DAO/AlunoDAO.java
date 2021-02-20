@@ -80,22 +80,29 @@ public class AlunoDAO {
         return alunos; 
     }
     
-    public ResultSet amount() {
+    public int amount() {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
+        int size = 0;
         
         try {
             
-            stmt = con.prepareStatement("SELECT COUNT(matricula) FROM Aluno");
+            stmt = con.prepareStatement("SELECT COUNT(*) AS matricula FROM aluno");
             rs = stmt.executeQuery();
+            
+            
+            while(rs.next()){
+                size = rs.getInt("matricula");;
+            }
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao contar!"+ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
-        return rs;
+
+        return size;
     }
     
     public void update(Aluno a) {

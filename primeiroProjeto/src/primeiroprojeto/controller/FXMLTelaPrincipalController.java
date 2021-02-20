@@ -98,7 +98,6 @@ public class FXMLTelaPrincipalController implements Initializable {
         loadMateriais();
         loadEspacos();
         loadEmprestimos();
-        totalAlunos();
     }
     
     private void loadAlunos() {
@@ -114,12 +113,10 @@ public class FXMLTelaPrincipalController implements Initializable {
         observableList = FXCollections.observableArrayList(alunoDAO.read());
         tableView.refresh();
         tableView.setItems(observableList);
-    }
-    AlunoDAO alunoDAO = new AlunoDAO();
-    private void totalAlunos() {
         
-        numAluno.setText(""+alunoDAO.amount());
+
     }
+
     
     @FXML
     private void handleJanelaCadastrarAluno() throws IOException {
