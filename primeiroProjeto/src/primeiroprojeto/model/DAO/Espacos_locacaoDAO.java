@@ -126,6 +126,27 @@ public class Espacos_locacaoDAO {
         }
     }
     
+    public void desbloquear(Espacos_locacao e) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            
+            stmt = con.prepareStatement("UPDATE espacos_locacao SET status = ? WHERE id = ?");
+            
+            stmt.setBoolean(1, true);
+            stmt.setInt(2, e.getId());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Desbloqueado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao desbloquear!"+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
     public int selectIDEspaco(String nome){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;

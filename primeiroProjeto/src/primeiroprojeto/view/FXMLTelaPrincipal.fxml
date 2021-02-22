@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLTelaPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLTelaPrincipalController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -110,17 +110,22 @@
                               <TableColumn fx:id="StatusMatCol" prefWidth="115.0" text="Status" />
                           </columns>
                         </TableView>
-                        <Button layoutX="300.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarMaterial" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Cadastrar" textFill="#fffefe">
+                        <Button layoutX="203.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarMaterial" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Cadastrar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="399.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaEditarMaterial" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Editar" textFill="#fffefe">
+                        <Button layoutX="302.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaEditarMaterial" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Editar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="495.0" layoutY="332.0" mnemonicParsing="false" onAction="#bloquearItem" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Bloquear" textFill="#fffefe">
+                        <Button layoutX="398.0" layoutY="332.0" mnemonicParsing="false" onAction="#bloquearItem" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Bloquear" textFill="#fffefe">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btnCreate11" layoutX="495.0" layoutY="332.0" mnemonicParsing="false" onAction="#desbloquearItem" prefHeight="25.0" prefWidth="91.0" styleClass="Button" stylesheets="@default.css" text="Desbloquear" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -140,17 +145,22 @@
                             <TableColumn fx:id="statusEspacCol" prefWidth="107.0" text="Status" />
                           </columns>
                         </TableView>
-                        <Button layoutX="300.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Cadastrar" textFill="#fffefe">
+                        <Button layoutX="188.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Cadastrar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="399.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaEditarEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Editar" textFill="#fffefe">
+                        <Button layoutX="287.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaEditarEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Editar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="495.0" layoutY="332.0" mnemonicParsing="false" onAction="#bloquearEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Bloquear" textFill="#fffefe">
+                        <Button layoutX="383.0" layoutY="332.0" mnemonicParsing="false" onAction="#bloquearEspaco" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Bloquear" textFill="#fffefe">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btnCreate111" layoutX="482.0" layoutY="332.0" mnemonicParsing="false" onAction="#desbloquearEspaco" prefHeight="25.0" prefWidth="91.0" styleClass="Button" stylesheets="@default.css" text="Desbloquear" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

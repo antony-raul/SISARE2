@@ -130,6 +130,27 @@ public class Itens_locacaoDAO {
         }
     }
     
+    public void desbloquear(Itens_locacao i) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            
+            stmt = con.prepareStatement("UPDATE itens_locacao SET status = ? WHERE id = ?");
+            
+            stmt.setBoolean(1, true);
+            stmt.setInt(2, i.getId());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Desbloqueado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao desbloquear!"+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
     public String selectItem(int id){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;

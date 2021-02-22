@@ -269,6 +269,18 @@ public class FXMLTelaPrincipalController implements Initializable {
         
     }
     
+    @FXML
+    private void desbloquearItem(ActionEvent event) {
+        Itens_locacao selectedItem = MaterialView.getSelectionModel().getSelectedItem();
+        Itens_locacaoDAO itemDAO = new Itens_locacaoDAO();
+        
+        if (selectedItem != null) {   
+            itemDAO.desbloquear(selectedItem);
+            tableView.refresh();
+        }
+        
+    }
+    
     private void loadEspacos() {
         idEspacCol.setCellValueFactory(new PropertyValueFactory<Espacos_locacao, Integer>("id"));
         nomeEspacCol.setCellValueFactory(new PropertyValueFactory<Espacos_locacao, String>("nome"));
@@ -287,6 +299,18 @@ public class FXMLTelaPrincipalController implements Initializable {
         
         if (selectedEspaco != null) {   
             espacoDAO.block(selectedEspaco);
+            espacosTableView.refresh();
+        }
+        
+    }
+    
+    @FXML
+    private void desbloquearEspaco(ActionEvent event) {
+        Espacos_locacao selectedEspaco = espacosTableView.getSelectionModel().getSelectedItem();
+        Espacos_locacaoDAO espacoDAO = new Espacos_locacaoDAO();
+        
+        if (selectedEspaco != null) {   
+            espacoDAO.desbloquear(selectedEspaco);
             espacosTableView.refresh();
         }
         
