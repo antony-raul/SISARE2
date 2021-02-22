@@ -41,7 +41,7 @@ import primeiroprojeto.model.bean.Itens_locacao;
  * @author raulz
  */
 public class FXMLTelaPrincipalController implements Initializable {
-     @FXML
+    @FXML
     private Text numAluno;
     @FXML
     private TableView<Aluno> tableView;
@@ -70,6 +70,8 @@ public class FXMLTelaPrincipalController implements Initializable {
     private TableColumn<Itens_locacao, String> NomeMatCol;
     @FXML
     private TableColumn<Itens_locacao, Integer> QtdMatCol;
+    @FXML
+    private TableColumn<Itens_locacao, Boolean> StatusMatCol;
     
     @FXML
     private TableColumn<Espacos_locacao, Integer> idEspacCol;
@@ -100,21 +102,28 @@ public class FXMLTelaPrincipalController implements Initializable {
         loadEmprestimos();
     }
     
+    public void refreshTables() {
+        tableView.getItems().clear();
+        loadAlunos();
+        tableView.refresh();
+        
+        /*MaterialView.refresh();
+        emprestimosTableView.refresh();
+        espacosTableView.refresh();*/
+    }
+    
     private void loadAlunos() {
         nomeCol.setCellValueFactory(new PropertyValueFactory<Aluno, String>("nome"));
         matriculaCol.setCellValueFactory(new PropertyValueFactory<Aluno, Integer>("matricula"));
         ruaCol.setCellValueFactory(new PropertyValueFactory<Aluno, String>("rua"));
         numeroCol.setCellValueFactory(new PropertyValueFactory<Aluno, Integer>("numero"));
         cursoCol.setCellValueFactory(new PropertyValueFactory<Aluno, String>("curso"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<Aluno, Boolean>("status"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<Aluno, Boolean>("ativo"));
         
         AlunoDAO alunoDAO = new AlunoDAO();
         
         observableList = FXCollections.observableArrayList(alunoDAO.read());
-        tableView.refresh();
         tableView.setItems(observableList);
-        
-
     }
 
     
@@ -200,10 +209,10 @@ public class FXMLTelaPrincipalController implements Initializable {
         IDMatCol.setCellValueFactory(new PropertyValueFactory<Itens_locacao, Integer>("id"));
         NomeMatCol.setCellValueFactory(new PropertyValueFactory<Itens_locacao, String>("nome"));
         QtdMatCol.setCellValueFactory(new PropertyValueFactory<Itens_locacao, Integer>("quantidade"));
+        StatusMatCol.setCellValueFactory(new PropertyValueFactory<Itens_locacao, Boolean>("status"));
         
         Itens_locacaoDAO itemDao = new Itens_locacaoDAO();
         observableListMat = FXCollections.observableArrayList(itemDao.read());
-        MaterialView.refresh();
         MaterialView.setItems(observableListMat);
         
     }
@@ -252,7 +261,6 @@ public class FXMLTelaPrincipalController implements Initializable {
         Espacos_locacaoDAO espacoDAO = new Espacos_locacaoDAO();
         
         observableListEspacos = FXCollections.observableArrayList(espacoDAO.read());
-        tableView.refresh();
         espacosTableView.setItems(observableListEspacos);
     }
     
@@ -356,8 +364,6 @@ public class FXMLTelaPrincipalController implements Initializable {
             
         );
         
-        
-        tableView.refresh();
         emprestimosTableView.setItems(observableListEmprestimos);
     }
     
