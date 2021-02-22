@@ -79,32 +79,7 @@ public class AlunoDAO {
         
         return alunos; 
     }
-    
-    public int amount() {
-        Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        int size = 0;
-        
-        try {
-            
-            stmt = con.prepareStatement("SELECT COUNT(*) AS matricula FROM aluno");
-            rs = stmt.executeQuery();
-            
-            
-            while(rs.next()){
-                size = rs.getInt("matricula");;
-            }
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao contar!"+ex);
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
-        }
-
-        return size;
-    }
-    
+      
     public void update(Aluno a) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -210,5 +185,30 @@ public class AlunoDAO {
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
+    }
+    
+    public int amountAlunos() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int size = 0;
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT COUNT(*) AS matricula FROM aluno");
+            rs = stmt.executeQuery();
+            
+            
+            while(rs.next()){
+                size = rs.getInt("matricula");
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao contar!"+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
+        return size;
     }
 }

@@ -44,6 +44,10 @@ public class FXMLTelaPrincipalController implements Initializable {
     @FXML
     private Text numAluno;
     @FXML
+    private Text numEspacos;
+    @FXML
+    private Text numMateriais;
+    @FXML
     private TableView<Aluno> tableView;
     @FXML
     private TableView<Itens_locacao> MaterialView;
@@ -100,12 +104,14 @@ public class FXMLTelaPrincipalController implements Initializable {
         loadMateriais();
         loadEspacos();
         loadEmprestimos();
+        numberOf();
     }
     
     public void refreshTables() {
         tableView.getItems().clear();
         loadAlunos();
         tableView.refresh();
+        //numberOf();
         
         /*MaterialView.refresh();
         emprestimosTableView.refresh();
@@ -124,6 +130,16 @@ public class FXMLTelaPrincipalController implements Initializable {
         
         observableList = FXCollections.observableArrayList(alunoDAO.read());
         tableView.setItems(observableList);
+    }
+    
+    private void numberOf() {
+        AlunoDAO alunoDAO = new AlunoDAO();
+        Itens_locacaoDAO itens_locacaoDAO = new Itens_locacaoDAO();
+        Espacos_locacaoDAO espacoDAO = new Espacos_locacaoDAO();
+        
+        numAluno.setText(""+alunoDAO.amountAlunos());
+        numMateriais.setText(""+itens_locacaoDAO.amountItens());
+        numEspacos.setText(""+espacoDAO.amountEspacos());
     }
 
     

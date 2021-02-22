@@ -181,4 +181,29 @@ public class Itens_locacaoDAO {
         return idItem;
     }
     
+    public int amountItens() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int size = 0;
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT COUNT(*) AS id FROM itens_locacao");
+            rs = stmt.executeQuery();
+            
+            
+            while(rs.next()){
+                size = rs.getInt("id");
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao contar!"+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
+        return size;
+    }
+    
 }

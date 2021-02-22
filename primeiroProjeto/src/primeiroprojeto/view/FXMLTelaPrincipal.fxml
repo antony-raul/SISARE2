@@ -11,13 +11,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLTelaPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLTelaPrincipalController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Inicio">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Text layoutX="35.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá, seja bem vindo!">
                            <font>
@@ -29,18 +29,35 @@
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Button>
-                        <TitledPane layoutX="256.0" layoutY="125.0" prefHeight="73.0" prefWidth="117.0" text="Aluno:">
+                        <TitledPane layoutX="87.0" layoutY="125.0" prefHeight="73.0" prefWidth="117.0" text="Aluno:">
                            <content>
-                              <Text fx:id="numAluno" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá, seja bem vindo!" textAlignment="CENTER" wrappingWidth="110.12744140625">
+                              <Text fx:id="numAluno" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="110.12744140625">
                                  <font>
                                     <Font name="Arial Bold" size="13.0" />
                                  </font>
                               </Text>
                            </content>
                         </TitledPane>
-                        <TitledPane layoutX="408.0" layoutY="125.0" prefHeight="73.0" prefWidth="117.0" text="Aluno:" />
-                        <TitledPane layoutX="86.0" layoutY="125.0" prefHeight="73.0" prefWidth="117.0" text="Aluno:" />
-                     </children></AnchorPane>
+                        <TitledPane layoutX="398.0" layoutY="125.0" prefHeight="73.0" prefWidth="117.0" text="Espaços:">
+                           <content>
+                              <Text fx:id="numEspacos" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                 <font>
+                                    <Font name="Arial Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </content>
+                        </TitledPane>
+                        <TitledPane layoutX="242.0" layoutY="125.0" prefHeight="73.0" prefWidth="117.0" text="Materiais:">
+                           <content>
+                              <Text fx:id="numMateriais" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Arial Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </content>
+                        </TitledPane>
+                     </children>
+                  </AnchorPane>
             </content>
           </Tab>
           <Tab text="Alunos">

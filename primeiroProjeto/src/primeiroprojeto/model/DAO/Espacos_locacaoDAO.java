@@ -151,4 +151,29 @@ public class Espacos_locacaoDAO {
 
         return idEspaco;
     }
+    
+    public int amountEspacos() {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int size = 0;
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT COUNT(*) as id FROM espacos_locacao");
+            rs = stmt.executeQuery();
+            
+            
+            while(rs.next()){
+                size = rs.getInt("id");
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao contar!"+ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
+        return size;
+    }
 }
