@@ -180,7 +180,7 @@
                               <TableColumn fx:id="statusEmprestCol" prefWidth="154.0" text="Status" />
                            </columns>
                         </TableView>
-                        <Button layoutX="300.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarEmprestimo" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Cadastrar" textFill="#fffefe">
+                        <Button layoutX="308.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleJanelaCadastrarEmprestimo" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Cadastrar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -190,12 +190,12 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="495.0" layoutY="332.0" mnemonicParsing="false" onAction="#deletarEmprestimo" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Deletar" textFill="#fffefe">
+                        <Button layoutX="494.0" layoutY="332.0" mnemonicParsing="false" onAction="#deletarEmprestimo" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Deletar" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btnDev" layoutX="206.0" layoutY="332.0" mnemonicParsing="false" onAction="#devolverEmprestimo" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Devolver" textFill="#fffefe">
+                        <Button fx:id="btnDev" layoutX="214.0" layoutY="332.0" mnemonicParsing="false" onAction="#devolverEmprestimo" prefHeight="0.0" prefWidth="79.0" styleClass="Button" stylesheets="@default.css" text="Devolver" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -203,6 +203,31 @@
                      </children>
                   </AnchorPane>
                </content>
+            </Tab>
+            <Tab text="Historico">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="emprestimosTableView1" layoutX="9.0" layoutY="29.0" prefHeight="290.0" prefWidth="582.0">
+                           <columns>
+                              <TableColumn fx:id="matHistCol1" prefWidth="147.0" text="Matrícula" />
+                              <TableColumn fx:id="dataHistCol1" minWidth="0.0" prefWidth="280.0" text="Data de Devolução" />
+                              <TableColumn fx:id="statusHistCol1" prefWidth="154.0" text="Status" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="490.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" styleClass="Button" stylesheets="@default.css" text="Desbloquear" textFill="#fffefe">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="383.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" styleClass="Button" stylesheets="@default.css" text="Ver Detalhes" textFill="#fffefe">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </content>
             </Tab>
         </tabs>
       </TabPane>
