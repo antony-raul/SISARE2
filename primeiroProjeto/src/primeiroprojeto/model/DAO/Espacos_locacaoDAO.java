@@ -173,6 +173,31 @@ public class Espacos_locacaoDAO {
         return idEspaco;
     }
     
+    public String selectNomeEspaco(int id){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String nomeEspaco = null;
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM espacos_locacao WHERE id = ?");
+            stmt.setInt(1,id);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                nomeEspaco = rs.getString("nome");
+            }
+            
+                      
+        } catch (SQLException ex) {
+            Logger.getLogger(EmprestimoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return nomeEspaco;
+    }
+    
     public int amountEspacos() {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;

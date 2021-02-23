@@ -82,7 +82,7 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
     
     @FXML
     private void btnResevar(ActionEvent event) throws ParseException {
-        /*Emprestimo emprestimo = new Emprestimo();
+        Emprestimo emprestimo = new Emprestimo();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
         
         Node node = (Node) event.getSource();
@@ -94,14 +94,24 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         Itens_locacaoDAO itemDao = new Itens_locacaoDAO();
         Itens_locacao nomeMaterial = opMaterial.getValue();
         
-        int idItem = itemDao.selectIDItem(nomeMaterial.getNome());
+        int idItem;
+        
+        if (opMaterial.getValue() == null) {
+            idItem = 0;
+        }else{
+            idItem = itemDao.selectIDItem(nomeMaterial.getNome());
+        }
         
         Espacos_locacaoDAO espacoDao = new Espacos_locacaoDAO();
         Espacos_locacao nomeEspaco = opEspacos.getValue();
         
-        int idEspaco = espacoDao.selectIDEspaco(nomeEspaco.getNome());
+        int idEspaco;
         
-        System.out.println(idItem);
+        if (opEspacos.getValue() == null) {
+            idEspaco = 0;
+        }else{
+            idEspaco = espacoDao.selectIDEspaco(nomeEspaco.getNome());
+        }
         
         emprestimo.setData_emprestimo(getDateTime());
         emprestimo.setId_resp_fk(Integer.parseInt(matricula.getText()));
@@ -111,13 +121,10 @@ public class FXMLCadastrarEmprestimoController implements Initializable {
         emprestimo.setId_espaco_loc(idEspaco);
         
         
-        emprestimoDAO.create(emprestimo);*/
+        emprestimoDAO.create(emprestimo);
+         
         
-        
-      
-        
-        
-        //matricula.setText("");
+        matricula.setText("");
         
         
         //RadioButton radio = (RadioButton) tipo.getSelectedToggle();

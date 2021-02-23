@@ -50,7 +50,7 @@ public class EmprestimoDAO {
         List<Emprestimo> emprestimos = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement(" SELECT * FROM emprestimo");
+            stmt = con.prepareStatement("SELECT * FROM emprestimo");
             rs = stmt.executeQuery();
             
             while(rs.next()){

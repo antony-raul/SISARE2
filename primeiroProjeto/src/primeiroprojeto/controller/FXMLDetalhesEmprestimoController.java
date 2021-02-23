@@ -20,6 +20,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import primeiroprojeto.model.DAO.EmprestimoDAO;
+import primeiroprojeto.model.DAO.Espacos_locacaoDAO;
 import primeiroprojeto.model.DAO.Itens_locacaoDAO;
 import primeiroprojeto.model.bean.Emprestimo;
 
@@ -73,6 +74,16 @@ public class FXMLDetalhesEmprestimoController implements Initializable {
             Itens_locacaoDAO itemDao = new Itens_locacaoDAO();
             int id = this.emprestimo.getId_item_loc();
             String nome = itemDao.selectItem(id);
+
+            itenEspaco.setDisable(true);
+            itenEspaco.setStyle("-fx-opacity: 1;");
+            itenEspaco.setText(nome);
+        }
+        
+        else if(this.emprestimo.getId_item_loc() == 0) {
+            Espacos_locacaoDAO espacosDao = new Espacos_locacaoDAO();
+            int id = this.emprestimo.getId_espaco_loc();
+            String nome = espacosDao.selectNomeEspaco(id);
 
             itenEspaco.setDisable(true);
             itenEspaco.setStyle("-fx-opacity: 1;");
