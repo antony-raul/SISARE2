@@ -50,7 +50,42 @@ public class EmprestimoDAO {
         List<Emprestimo> emprestimos = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM emprestimo");
+            stmt = con.prepareStatement("SELECT * FROM emprestimo WHERE status = true");
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Emprestimo emprestimo = new Emprestimo();
+                
+                emprestimo.setData_emprestimo(rs.getDate("data_emprestimo"));
+                emprestimo.setData_devolucao(rs.getDate("data_devolucao"));
+                emprestimo.setId_resp_fk(rs.getInt("id_resp_fk"));
+                emprestimo.setId_item_loc(rs.getInt("id_item_loc"));
+                emprestimo.setId_espaco_loc(rs.getInt("id_espacos_loc"));
+                emprestimo.setMatricula_func_fk(rs.getInt("matricula_func_fk"));
+                emprestimo.setId(rs.getInt("id"));
+                emprestimo.setStatus(rs.getBoolean("status"));
+                
+                emprestimos.add(emprestimo);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EmprestimoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return emprestimos;
+    }
+    
+    public List<Emprestimo> readHistorico(){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Emprestimo> emprestimos = new ArrayList<>();
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM emprestimo WHERE status = false");
             rs = stmt.executeQuery();
             
             while(rs.next()){
@@ -139,11 +174,12 @@ public class EmprestimoDAO {
             stmt.setInt(8,e.getId());
             
             stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Bloqueado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Devolvido com sucesso!");
         }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro ao bloquear!!!"+ex);
+            JOptionPane.showMessageDialog(null, "Erro ao devolver!!!"+ex);
         }finally{
             ConnectionFactory.closeConnection(con,stmt);
         }
     }
+    
  }

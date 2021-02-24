@@ -56,6 +56,8 @@ public class FXMLTelaPrincipalController implements Initializable {
     @FXML
     private TableView<Emprestimo> emprestimosTableView;
     @FXML
+    private TableView<Emprestimo> historicoTableView;
+    @FXML
     private TableColumn<Aluno, String> nomeCol;
     @FXML
     private TableColumn<Aluno, Integer> matriculaCol;
@@ -91,11 +93,19 @@ public class FXMLTelaPrincipalController implements Initializable {
     @FXML
     private TableColumn<Emprestimo, Boolean> statusEmprestCol;
     
+    @FXML
+    private TableColumn<Emprestimo, Integer> matHistCol;
+    @FXML
+    private TableColumn<Emprestimo, Date> dataHistCol;
+    @FXML
+    private TableColumn<Emprestimo, Boolean> statusHistCol;
+    
     
     ObservableList<Aluno> observableList;
     ObservableList<Itens_locacao> observableListMat;
     ObservableList<Espacos_locacao> observableListEspacos;
     ObservableList<Emprestimo> observableListEmprestimos;
+    ObservableList<Emprestimo> observableListHistorico;
 
 
     @Override
@@ -104,6 +114,7 @@ public class FXMLTelaPrincipalController implements Initializable {
         loadMateriais();
         loadEspacos();
         loadEmprestimos();
+        loadHistorico();
         numberOf();
     }
     
@@ -465,5 +476,50 @@ public class FXMLTelaPrincipalController implements Initializable {
         
     }
     
+    private void loadHistorico() {
+        matHistCol.setCellValueFactory(new PropertyValueFactory<Emprestimo, Integer>("id_resp_fk"));
+        dataHistCol.setCellValueFactory(new PropertyValueFactory<Emprestimo, Date>("data_devolucao"));
+        statusHistCol.setCellValueFactory(new PropertyValueFactory<Emprestimo, Boolean>("status"));
+        
+        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+
+        observableListHistorico = FXCollections.observableArrayList(emprestimoDAO.readHistorico());
+        historicoTableView.setItems(observableListHistorico);
+    }
+    
+    @FXML
+    private void handleJanelaDetalhesEmprestimosHist(ActionEvent event) throws IOException {
+        Emprestimo selectedItem = historicoTableView.getSelectionModel().getSelectedItem();
+        
+        
+        if (selectedItem != null) {
+            Node node = (Node) event.getSource();
+            
+            Stage stage = (Stage) node.getScene().getWindow();
+            
+            FXMLLoader loader = new FXMLLoader();
+            
+            loader.setLocation(getClass().getResource("/primeiroprojeto/view/FXMLDetalhesEmprestimo.fxml"));
+            
+            FXMLDetalhesEmprestimoController controller = new FXMLDetalhesEmprestimoController();
+            
+            controller.setEmprestimo(selectedItem);
+            
+            loader.setController(controller);
+            
+            Parent root = loader.load();
+            
+            stage.setUserData(selectedItem);
+            
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setIconified(false);
+            stage.setTitle("Detalhes do Empréstimo");
+            stage.show();
+            
+        }
+        
+    }
     
 }

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLTelaPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="primeiroprojeto.controller.FXMLTelaPrincipalController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -208,19 +208,14 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="emprestimosTableView1" layoutX="9.0" layoutY="29.0" prefHeight="290.0" prefWidth="582.0">
+                        <TableView fx:id="historicoTableView" layoutX="9.0" layoutY="29.0" prefHeight="290.0" prefWidth="582.0">
                            <columns>
-                              <TableColumn fx:id="matHistCol1" prefWidth="147.0" text="Matrícula" />
-                              <TableColumn fx:id="dataHistCol1" minWidth="0.0" prefWidth="280.0" text="Data de Devolução" />
-                              <TableColumn fx:id="statusHistCol1" prefWidth="154.0" text="Status" />
+                              <TableColumn fx:id="matHistCol" prefWidth="147.0" text="Matrícula" />
+                              <TableColumn fx:id="dataHistCol" minWidth="0.0" prefWidth="280.0" text="Data de Devolução" />
+                              <TableColumn fx:id="statusHistCol" prefWidth="154.0" text="Status" />
                            </columns>
                         </TableView>
-                        <Button layoutX="490.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" styleClass="Button" stylesheets="@default.css" text="Desbloquear" textFill="#fffefe">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button layoutX="383.0" layoutY="332.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" styleClass="Button" stylesheets="@default.css" text="Ver Detalhes" textFill="#fffefe">
+                        <Button layoutX="497.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleJanelaDetalhesEmprestimosHist" prefHeight="25.0" prefWidth="89.0" styleClass="Button" stylesheets="@default.css" text="Ver Detalhes" textFill="#fffefe">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
