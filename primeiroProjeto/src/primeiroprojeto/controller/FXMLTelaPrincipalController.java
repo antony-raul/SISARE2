@@ -546,7 +546,7 @@ public class FXMLTelaPrincipalController implements Initializable {
         Document doc = new Document();
 
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream("C:/Users/kaio/Desktop/Relatorio.pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream("C:/Users/raulz/Desktop/Relatorio.pdf"));
             
             doc.open();
             
@@ -588,9 +588,17 @@ public class FXMLTelaPrincipalController implements Initializable {
             table.addCell(cell4);
             table.addCell(cell5);
             
+            AlunoDAO alunoDao = new AlunoDAO(); 
+            Itens_locacaoDAO itensDao = new Itens_locacaoDAO();
+            Espacos_locacaoDAO espacoDao = new Espacos_locacaoDAO();
+            
             for(int x=0; x<emprestimos.size(); x++) {
+                String nomeAluno = alunoDao.selectNomeAluno(emprestimos.get(x).getId_resp_fk());
+                doc.add(table.addCell(new PdfPCell((new Paragraph(nomeAluno)))));
+                
                 String matriculaAluno = ""+emprestimos.get(x).getId_resp_fk();
                 doc.add(table.addCell(new PdfPCell((new Paragraph(matriculaAluno)))));
+                
                 
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
                 String dataEmprestimo = dateFormat.format(emprestimos.get(x).getData_emprestimo());  
@@ -598,6 +606,14 @@ public class FXMLTelaPrincipalController implements Initializable {
                 
                 String dataDevolucao = dateFormat.format(emprestimos.get(x).getData_devolucao());  
                 doc.add(table.addCell(new PdfPCell((new Paragraph(dataDevolucao)))));
+                
+                if(emprestimos.get(x).getId_espaco_loc() == 0){
+                    String nomeItem = itensDao.selectItem(emprestimos.get(x).getId_item_loc());
+                    doc.add(table.addCell(new PdfPCell((new Paragraph(nomeItem)))));
+                }else{
+                    String nomeEspaco = espacoDao.selectNomeEspaco(emprestimos.get(x).getId_espaco_loc());
+                    doc.add(table.addCell(new PdfPCell((new Paragraph(nomeEspaco)))));
+                }
             }
 
             doc.add(table);

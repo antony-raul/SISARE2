@@ -211,4 +211,29 @@ public class AlunoDAO {
 
         return size;
     }
+    
+    public String selectNomeAluno(int id){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String nomeAluno = "";
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM aluno WHERE matricula = ?");
+            stmt.setInt(1,id);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                nomeAluno = rs.getString("nome");
+            }
+            
+                      
+        } catch (SQLException ex) {
+            Logger.getLogger(EmprestimoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+
+        return nomeAluno;
+    }
 }
