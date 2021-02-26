@@ -29,6 +29,7 @@ public class FXMLLoginAdminController implements Initializable{
     @FXML
     private TextField pass;
     
+    
     @FXML
     private void LoginAdminBotao(ActionEvent event) throws IOException  {
         
@@ -36,6 +37,8 @@ public class FXMLLoginAdminController implements Initializable{
         
         if(dao.checkLogin(userName.getText(), pass.getText())){
             System.out.println(" Acesso permitido");
+            
+            
             
         Parent root = FXMLLoader.load(getClass().getResource("/primeiroprojeto/view/FXMLHomeAdmin.fxml"));
         
@@ -50,6 +53,7 @@ public class FXMLLoginAdminController implements Initializable{
         stage.show();
         }else{
             System.out.println(" Acesso Negado");
+            
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Falha no Login!");
             alert.setHeaderText("Ocorreu um erro");

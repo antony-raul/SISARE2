@@ -5,8 +5,11 @@
  */
 package primeiroprojeto.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -25,7 +28,7 @@ public class FXMLEditarFuncionarioController {
     @FXML
     private javafx.scene.control.Button btnCancelar;
     
-    
+
     @FXML
     private void btnUpdate(ActionEvent event){
         
@@ -40,8 +43,6 @@ public class FXMLEditarFuncionarioController {
         
         fdao.update(f);
         
-        nomeFunc.setText("");
-        senhaFunc.setText("");
                 
     }
     
@@ -50,4 +51,5 @@ public class FXMLEditarFuncionarioController {
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
         stage.close();
     }
+
 }

@@ -28,7 +28,7 @@
             <Cursor fx:constant="HAND" />
          </cursor></Button>
       <Label layoutX="138.0" layoutY="14.0" text="Login do Admin" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" />
-      <PasswordField id="SenhaTextField" layoutX="45.0" layoutY="115.0" prefHeight="50.0" prefWidth="270.0" promptText="Password" styleClass="TextField" stylesheets="@default.css">
+      <PasswordField id="SenhaTextField" fx:id="pass" layoutX="45.0" layoutY="115.0" prefHeight="50.0" prefWidth="270.0" promptText="Password" styleClass="TextField" stylesheets="@default.css">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>

@@ -39,6 +39,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -503,6 +505,7 @@ public class FXMLTelaPrincipalController implements Initializable {
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
 
         observableListHistorico = FXCollections.observableArrayList(emprestimoDAO.readHistorico());
+        historicoTableView.getSortOrder().add(dataHistCol);
         historicoTableView.setItems(observableListHistorico);
     }
     
@@ -546,7 +549,7 @@ public class FXMLTelaPrincipalController implements Initializable {
         Document doc = new Document();
 
         try {
-            PdfWriter.getInstance(doc, new FileOutputStream("C:/Users/raulz/Desktop/Relatorio.pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream("C:/Users/Public/Documents/Relatorio.pdf"));
             
             doc.open();
             
@@ -557,9 +560,14 @@ public class FXMLTelaPrincipalController implements Initializable {
             doc.add(chapter);
             
             doc.add( Chunk.NEWLINE );
+            Paragraph sectionTable1 = new Paragraph("Empréstimos Ativos");
+            Section section = chapter.addSection(sectionTable1);
+            doc.add(section);
             doc.add( Chunk.NEWLINE );
             
             List<Emprestimo> emprestimos = new EmprestimoDAO().read();
+            List<Emprestimo> emprestimosFalse = new EmprestimoDAO().readHistorico();
+            
             PdfPTable table = new PdfPTable(5);
             table.setWidthPercentage(100);
             PdfPCell cell1 = new PdfPCell(new Paragraph("Aluno"));
@@ -588,6 +596,19 @@ public class FXMLTelaPrincipalController implements Initializable {
             table.addCell(cell4);
             table.addCell(cell5);
             
+            
+            //tabela finalizado
+            
+            PdfPTable tableFinal = new PdfPTable(5);
+            tableFinal.setWidthPercentage(100);
+            
+            
+            tableFinal.addCell(cell1);
+            tableFinal.addCell(cell2);
+            tableFinal.addCell(cell3);
+            tableFinal.addCell(cell4);
+            tableFinal.addCell(cell5);
+            
             AlunoDAO alunoDao = new AlunoDAO(); 
             Itens_locacaoDAO itensDao = new Itens_locacaoDAO();
             Espacos_locacaoDAO espacoDao = new Espacos_locacaoDAO();
@@ -595,18 +616,18 @@ public class FXMLTelaPrincipalController implements Initializable {
             for(int x=0; x<emprestimos.size(); x++) {
                 String nomeAluno = alunoDao.selectNomeAluno(emprestimos.get(x).getId_resp_fk());
                 doc.add(table.addCell(new PdfPCell((new Paragraph(nomeAluno)))));
-                
+
                 String matriculaAluno = ""+emprestimos.get(x).getId_resp_fk();
                 doc.add(table.addCell(new PdfPCell((new Paragraph(matriculaAluno)))));
-                
-                
+
+
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
                 String dataEmprestimo = dateFormat.format(emprestimos.get(x).getData_emprestimo());  
                 doc.add(table.addCell(new PdfPCell((new Paragraph(dataEmprestimo)))));
-                
+
                 String dataDevolucao = dateFormat.format(emprestimos.get(x).getData_devolucao());  
                 doc.add(table.addCell(new PdfPCell((new Paragraph(dataDevolucao)))));
-                
+
                 if(emprestimos.get(x).getId_espaco_loc() == 0){
                     String nomeItem = itensDao.selectItem(emprestimos.get(x).getId_item_loc());
                     doc.add(table.addCell(new PdfPCell((new Paragraph(nomeItem)))));
@@ -615,10 +636,45 @@ public class FXMLTelaPrincipalController implements Initializable {
                     doc.add(table.addCell(new PdfPCell((new Paragraph(nomeEspaco)))));
                 }
             }
+            
+            
+            for(int x=0; x<emprestimosFalse.size(); x++) {
+                String nomeAluno = alunoDao.selectNomeAluno(emprestimos.get(x).getId_resp_fk());
+                doc.add(tableFinal.addCell(new PdfPCell((new Paragraph(nomeAluno)))));
+
+                String matriculaAluno = ""+emprestimos.get(x).getId_resp_fk();
+                doc.add(tableFinal.addCell(new PdfPCell((new Paragraph(matriculaAluno)))));
+
+
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+                String dataEmprestimo = dateFormat.format(emprestimos.get(x).getData_emprestimo());  
+                doc.add(tableFinal.addCell(new PdfPCell((new Paragraph(dataEmprestimo)))));
+
+                String dataDevolucao = dateFormat.format(emprestimos.get(x).getData_devolucao());  
+                doc.add(tableFinal.addCell(new PdfPCell((new Paragraph(dataDevolucao)))));
+
+                if(emprestimos.get(x).getId_espaco_loc() == 0){
+                    String nomeItem = itensDao.selectItem(emprestimos.get(x).getId_item_loc());
+                    doc.add(tableFinal.addCell(new PdfPCell((new Paragraph(nomeItem)))));
+                }else{
+                    String nomeEspaco = espacoDao.selectNomeEspaco(emprestimos.get(x).getId_espaco_loc());
+                    doc.add(tableFinal.addCell(new PdfPCell((new Paragraph(nomeEspaco)))));
+                }
+            }
 
             doc.add(table);
+            doc.add( Chunk.NEWLINE );
+            
+            Paragraph sectionTable2 = new Paragraph("Empréstimos Finalizados");
+            Section section2 = chapter.addSection(sectionTable2);
+            doc.add(section2);
+            doc.add( Chunk.NEWLINE );
+            doc.add(tableFinal);
        
             doc.close();
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setHeaderText("Relatório Gerado com Sucesso na Pasta de Documentos Públicos");
+            alert.show();
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
