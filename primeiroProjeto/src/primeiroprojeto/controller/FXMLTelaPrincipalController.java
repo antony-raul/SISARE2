@@ -5,12 +5,31 @@
  */
 package primeiroprojeto.controller;
 
+import com.itextpdf.text.Chapter;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Section;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -519,6 +538,78 @@ public class FXMLTelaPrincipalController implements Initializable {
             stage.show();
             
         }
+        
+    }
+    
+    @FXML
+    private void gerarRelatorio(ActionEvent event) {
+        Document doc = new Document();
+
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream("C:/Users/kaio/Desktop/Relatorio.pdf"));
+            
+            doc.open();
+            
+            Font font1 = FontFactory.getFont(FontFactory.COURIER, 18, Font.BOLD);
+            Paragraph chapterTitle = new Paragraph("Relatório de Empréstimos", font1);
+            Chapter chapter = new Chapter(chapterTitle, 1);
+            chapter.setNumberDepth(0);
+            doc.add(chapter);
+            
+            doc.add( Chunk.NEWLINE );
+            doc.add( Chunk.NEWLINE );
+            
+            List<Emprestimo> emprestimos = new EmprestimoDAO().read();
+            PdfPTable table = new PdfPTable(5);
+            table.setWidthPercentage(100);
+            PdfPCell cell1 = new PdfPCell(new Paragraph("Aluno"));
+            cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell cell2 = new PdfPCell(new Paragraph("Matrícula"));
+            cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell cell3 = new PdfPCell(new Paragraph("Data de Empréstimo"));
+            cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell cell4 = new PdfPCell(new Paragraph("Data de Devolução"));
+            cell4.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell4.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            PdfPCell cell5 = new PdfPCell(new Paragraph("Material/Espaço"));
+            cell5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell5.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            
+            table.addCell(cell1);
+            table.addCell(cell2);
+            table.addCell(cell3);
+            table.addCell(cell4);
+            table.addCell(cell5);
+            
+            for(int x=0; x<emprestimos.size(); x++) {
+                String matriculaAluno = ""+emprestimos.get(x).getId_resp_fk();
+                doc.add(table.addCell(new PdfPCell((new Paragraph(matriculaAluno)))));
+                
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+                String dataEmprestimo = dateFormat.format(emprestimos.get(x).getData_emprestimo());  
+                doc.add(table.addCell(new PdfPCell((new Paragraph(dataEmprestimo)))));
+                
+                String dataDevolucao = dateFormat.format(emprestimos.get(x).getData_devolucao());  
+                doc.add(table.addCell(new PdfPCell((new Paragraph(dataDevolucao)))));
+            }
+
+            doc.add(table);
+       
+            doc.close();
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
         
     }
     
